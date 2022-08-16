@@ -1,0 +1,54 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "array", "Blitz-Examples\array\array.vcproj", "{53965055-E932-4920-87F3-23BF55A11F1D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{53965055-E932-4920-87F3-23BF55A11F1D} = {53965055-E932-4920-87F3-23BF55A11F1D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cartesian", "Blitz-Examples\cartesian\cartesian.vcproj", "{F0A889E8-BFAE-4B41-A879-4F125A760F29}"
+	ProjectSection(ProjectDependencies) = postProject
+		{53965055-E932-4920-87F3-23BF55A11F1D} = {53965055-E932-4920-87F3-23BF55A11F1D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "complex-test", "Blitz-Examples\complex-test\complex-test.vcproj", "{4F475F85-C7E1-42A8-801C-82FA3647FDC5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{53965055-E932-4920-87F3-23BF55A11F1D} = {53965055-E932-4920-87F3-23BF55A11F1D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "matmult", "Blitz-Examples\matmult\matmult.vcproj", "{30EE420E-2375-43D8-B960-021BC991ED3B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{53965055-E932-4920-87F3-23BF55A11F1D} = {53965055-E932-4920-87F3-23BF55A11F1D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "simple", "Blitz-Examples\simple\simple.vcproj", "{E41E23AD-B6C9-4C6C-ADCC-8E3D5CDFE07F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{53965055-E932-4920-87F3-23BF55A11F1D} = {53965055-E932-4920-87F3-23BF55A11F1D}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "blitz", "blitz\blitz.vcproj", "{C84C9EF2-8B8C-4588-B551-6CAB12709904}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53965055-E932-4920-87F3-23BF55A11F1D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{53965055-E932-4920-87F3-23BF55A11F1D}.Debug|Win32.Build.0 = Debug|Win32
+		{53965055-E932-4920-87F3-23BF55A11F1D}.Release|Win32.ActiveCfg = Release|Win32
+		{53965055-E932-4920-87F3-23BF55A11F1D}.Release|Win32.Build.0 = Release|Win32
+		{F0A889E8-BFAE-4B41-A879-4F125A760F29}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F0A889E8-BFAE-4B41-A879-4F125A760F29}.Release|Win32.ActiveCfg = Release|Win32
+		{4F475F85-C7E1-42A8-801C-82FA3647FDC5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4F475F85-C7E1-42A8-801C-82FA3647FDC5}.Release|Win32.ActiveCfg = Release|Win32
+		{30EE420E-2375-43D8-B960-021BC991ED3B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{30EE420E-2375-43D8-B960-021BC991ED3B}.Release|Win32.ActiveCfg = Release|Win32
+		{E41E23AD-B6C9-4C6C-ADCC-8E3D5CDFE07F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E41E23AD-B6C9-4C6C-ADCC-8E3D5CDFE07F}.Release|Win32.ActiveCfg = Release|Win32
+		{C84C9EF2-8B8C-4588-B551-6CAB12709904}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C84C9EF2-8B8C-4588-B551-6CAB12709904}.Release|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

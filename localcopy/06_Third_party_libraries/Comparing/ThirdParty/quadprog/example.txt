@@ -1,0 +1,5 @@
+QuadProgPP::Matrix<double> G, CE, CI;
+QuadProgPP::Vector<double> g0, ce0, ci0, x;
+
+
+QuadProgPP::solve_quadprog(G, g0, CE, ce0, CI, ci0, x);
