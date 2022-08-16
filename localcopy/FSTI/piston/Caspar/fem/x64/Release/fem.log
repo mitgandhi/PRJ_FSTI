@@ -1,0 +1,33 @@
+﻿Build started 6/13/2018 4:37:59 PM.
+     1>Project "I:\localCopy\FSTI\piston\Caspar\fem\fem.vcxproj" on node 3 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "x64\Release\fem.lastbuildstate".
+       InitializeBuildStatus:
+         Creating "x64\Release\fem.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /IC:\Dan\ThirdParty /Zi /nologo /W3 /WX- /O2 /Oi /Ot /GL /D WIN64 /D NDEBUG /D _CONSOLE /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /wd4800 /wd4805 /errorReport:prompt src\femElement.cpp src\femLoads.cpp src\femSolver.cpp src\femStiffness.cpp src\readFunctions.cpp src\writeDisplacement.cpp /D_SCL_SECURE_NO_DEPRECATE 
+         femElement.cpp
+         femLoads.cpp
+         femSolver.cpp
+     1>src\femSolver.cpp(101): warning C4267: 'initializing' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\femSolver.cpp(104): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+         femStiffness.cpp
+         readFunctions.cpp
+         writeDisplacement.cpp
+       Lib:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\Lib.exe /OUT:"I:\localCopy\FSTI\piston\Caspar\main\x64\Release\fem.lib" /NOLOGO /LTCG x64\Release\femElement.obj
+         x64\Release\femLoads.obj
+         x64\Release\femSolver.obj
+         x64\Release\femStiffness.obj
+         x64\Release\readFunctions.obj
+         x64\Release\writeDisplacement.obj
+         I:\localCopy\FSTI\piston\Caspar\main\x64\Release\caspar_input.lib
+         fem.vcxproj -> I:\localCopy\FSTI\piston\Caspar\main\x64\Release\fem.lib
+       FinalizeBuildStatus:
+         Deleting file "x64\Release\fem.unsuccessfulbuild".
+         Touching "x64\Release\fem.lastbuildstate".
+     1>Done Building Project "I:\localCopy\FSTI\piston\Caspar\fem\fem.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.78

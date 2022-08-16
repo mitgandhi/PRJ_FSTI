@@ -1,0 +1,46 @@
+﻿Build started 6/13/2018 4:37:51 PM.
+     1>Project "I:\localCopy\FSTI\piston\Caspar\caspar_input\caspar_input.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "x64\Release\caspar_input.lastbuildstate".
+       InitializeBuildStatus:
+         Creating "x64\Release\caspar_input.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /wd4722 /errorReport:prompt blockoptions.cpp geometry.cpp input.cpp inputfile.cpp logger.cpp lubricationmodule.cpp materials.cpp oil.cpp operatingconditions.cpp pistonoptions.cpp pmodule.cpp section.cpp slipperoptions.cpp thermalfile.cpp
+         blockoptions.cpp
+         geometry.cpp
+         input.cpp
+         inputfile.cpp
+         logger.cpp
+         lubricationmodule.cpp
+         materials.cpp
+         oil.cpp
+         operatingconditions.cpp
+         pistonoptions.cpp
+         pmodule.cpp
+         section.cpp
+         slipperoptions.cpp
+         thermalfile.cpp
+       Lib:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\Lib.exe /OUT:"I:\localCopy\FSTI\piston\Caspar\main\x64\Release\caspar_input.lib" /NOLOGO /LTCG x64\Release\blockoptions.obj
+         x64\Release\geometry.obj
+         x64\Release\input.obj
+         x64\Release\inputfile.obj
+         x64\Release\logger.obj
+         x64\Release\lubricationmodule.obj
+         x64\Release\materials.obj
+         x64\Release\oil.obj
+         x64\Release\operatingconditions.obj
+         x64\Release\pistonoptions.obj
+         x64\Release\pmodule.obj
+         x64\Release\section.obj
+         x64\Release\slipperoptions.obj
+         x64\Release\thermalfile.obj
+         caspar_input.vcxproj -> I:\localCopy\FSTI\piston\Caspar\main\x64\Release\caspar_input.lib
+       FinalizeBuildStatus:
+         Deleting file "x64\Release\caspar_input.unsuccessfulbuild".
+         Touching "x64\Release\caspar_input.lastbuildstate".
+     1>Done Building Project "I:\localCopy\FSTI\piston\Caspar\caspar_input\caspar_input.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:07.98

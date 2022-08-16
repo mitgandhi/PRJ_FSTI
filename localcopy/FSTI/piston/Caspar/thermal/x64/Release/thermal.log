@@ -1,0 +1,85 @@
+﻿Build started 6/13/2018 4:38:04 PM.
+     1>Project "I:\localCopy\FSTI\piston\Caspar\thermal\thermal.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "x64\Release\thermal.lastbuildstate".
+       InitializeBuildStatus:
+         Creating "x64\Release\thermal.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Ot /GL /D WIN64 /D NDEBUG /D _CONSOLE /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /wd4800 /wd4805 /errorReport:prompt src\CFEMThermal.cpp src\CThermal.cpp /MP /D_SCL_SECURE_NO_DEPRECATE 
+         CFEMThermal.cpp
+         CThermal.cpp
+     1>src\CThermal.cpp(381): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CThermal.cpp(617): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CThermal.cpp(646): warning C4102: 'gmm' : unreferenced label
+     1>src\CThermal.cpp(960): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CThermal.cpp(1165): warning C4267: 'initializing' : conversion from 'size_t' to 'unsigned short', possible loss of data
+       Lib:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\Lib.exe /OUT:"I:\localCopy\FSTI\piston\Caspar\main\x64\Release\thermal.lib" /NOLOGO /LTCG x64\Release\CFEMThermal.obj
+         x64\Release\CThermal.obj
+         I:\localCopy\FSTI\piston\Caspar\main\x64\Release\caspar_input.lib
+         I:\localCopy\FSTI\piston\Caspar\main\x64\Release\fem.lib
+         I:\localCopy\FSTI\piston\Caspar\main\x64\Release\mesh.lib
+     1>fem.lib(thermalfile.obj) : warning LNK4006: "private: static char const * * thermal_file::neumann_kwds" (?neumann_kwds@thermal_file@@0PAPEBDA) already defined in caspar_input.lib(thermalfile.obj); second definition ignored
+     1>fem.lib(thermalfile.obj) : warning LNK4006: "private: static char const * * thermal_file::constraints_kwds" (?constraints_kwds@thermal_file@@0PAPEBDA) already defined in caspar_input.lib(thermalfile.obj); second definition ignored
+     1>fem.lib(thermalfile.obj) : warning LNK4006: "private: static char const * * thermal_file::dirichlet_kwds" (?dirichlet_kwds@thermal_file@@0PAPEBDA) already defined in caspar_input.lib(thermalfile.obj); second definition ignored
+     1>fem.lib(thermalfile.obj) : warning LNK4006: "private: static char const * * thermal_file::general_kwds" (?general_kwds@thermal_file@@0PAPEBDA) already defined in caspar_input.lib(thermalfile.obj); second definition ignored
+     1>fem.lib(thermalfile.obj) : warning LNK4006: "private: static char const * * thermal_file::boundary_kwds" (?boundary_kwds@thermal_file@@0PAPEBDA) already defined in caspar_input.lib(thermalfile.obj); second definition ignored
+     1>fem.lib(thermalfile.obj) : warning LNK4006: "private: static char const * * thermal_file::mixed_kwds" (?mixed_kwds@thermal_file@@0PAPEBDA) already defined in caspar_input.lib(thermalfile.obj); second definition ignored
+     1>fem.lib(thermalfile.obj) : warning LNK4006: "public: int __cdecl thermal_file::read(struct input_data &)" (?read@thermal_file@@QEAAHAEAUinput_data@@@Z) already defined in caspar_input.lib(thermalfile.obj); second definition ignored
+     1>fem.lib(slipperoptions.obj) : warning LNK4006: "private: static char const * * optionsslipper_file::numeric_kwds" (?numeric_kwds@optionsslipper_file@@0PAPEBDA) already defined in caspar_input.lib(slipperoptions.obj); second definition ignored
+     1>fem.lib(slipperoptions.obj) : warning LNK4006: "private: static char const * * optionsslipper_file::position_kwds" (?position_kwds@optionsslipper_file@@0PAPEBDA) already defined in caspar_input.lib(slipperoptions.obj); second definition ignored
+     1>fem.lib(slipperoptions.obj) : warning LNK4006: "private: static char const * * optionsslipper_file::fluidgrid_kwds" (?fluidgrid_kwds@optionsslipper_file@@0PAPEBDA) already defined in caspar_input.lib(slipperoptions.obj); second definition ignored
+     1>fem.lib(slipperoptions.obj) : warning LNK4006: "private: static char const * * optionsslipper_file::general_kwds" (?general_kwds@optionsslipper_file@@0PAPEBDA) already defined in caspar_input.lib(slipperoptions.obj); second definition ignored
+     1>fem.lib(slipperoptions.obj) : warning LNK4006: "private: static char const * * optionsslipper_file::friction_kwds" (?friction_kwds@optionsslipper_file@@0PAPEBDA) already defined in caspar_input.lib(slipperoptions.obj); second definition ignored
+     1>fem.lib(slipperoptions.obj) : warning LNK4006: "public: int __cdecl optionsslipper_file::read(struct input_data &)" (?read@optionsslipper_file@@QEAAHAEAUinput_data@@@Z) already defined in caspar_input.lib(slipperoptions.obj); second definition ignored
+     1>fem.lib(section.obj) : warning LNK4006: "public: void __cdecl section::check_keywords(char const * * const,unsigned int,char const *)" (?check_keywords@section@@QEAAXQEAPEBDIPEBD@Z) already defined in caspar_input.lib(section.obj); second definition ignored
+     1>fem.lib(section.obj) : warning LNK4006: "public: int __cdecl section::find_keyword(char *)" (?find_keyword@section@@QEAAHPEAD@Z) already defined in caspar_input.lib(section.obj); second definition ignored
+     1>fem.lib(section.obj) : warning LNK4006: "public: void __cdecl section::push_back(class std::basic_istringstream<char,struct std::char_traits<char>,class std::allocator<char> > &)" (?push_back@section@@QEAAXAEAV?$basic_istringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) already defined in caspar_input.lib(section.obj); second definition ignored
+     1>fem.lib(pmodule.obj) : warning LNK4006: "private: static char const * * pmodule_file::kwds" (?kwds@pmodule_file@@0PAPEBDA) already defined in caspar_input.lib(pmodule.obj); second definition ignored
+     1>fem.lib(pmodule.obj) : warning LNK4006: "public: int __cdecl pmodule_file::read(struct input_data &)" (?read@pmodule_file@@QEAAHAEAUinput_data@@@Z) already defined in caspar_input.lib(pmodule.obj); second definition ignored
+     1>fem.lib(pistonoptions.obj) : warning LNK4006: "private: static char const * * optionspiston_file::position_kwds" (?position_kwds@optionspiston_file@@0PAPEBDA) already defined in caspar_input.lib(pistonoptions.obj); second definition ignored
+     1>fem.lib(pistonoptions.obj) : warning LNK4006: "private: static char const * * optionspiston_file::numeric_kwds" (?numeric_kwds@optionspiston_file@@0PAPEBDA) already defined in caspar_input.lib(pistonoptions.obj); second definition ignored
+     1>fem.lib(pistonoptions.obj) : warning LNK4006: "private: static char const * * optionspiston_file::GS_kwds" (?GS_kwds@optionspiston_file@@0PAPEBDA) already defined in caspar_input.lib(pistonoptions.obj); second definition ignored
+     1>fem.lib(pistonoptions.obj) : warning LNK4006: "private: static char const * * optionspiston_file::general_kwds" (?general_kwds@optionspiston_file@@0PAPEBDA) already defined in caspar_input.lib(pistonoptions.obj); second definition ignored
+     1>fem.lib(pistonoptions.obj) : warning LNK4006: "private: static char const * * optionspiston_file::GMG_kwds" (?GMG_kwds@optionspiston_file@@0PAPEBDA) already defined in caspar_input.lib(pistonoptions.obj); second definition ignored
+     1>fem.lib(pistonoptions.obj) : warning LNK4006: "public: int __cdecl optionspiston_file::read(struct input_data &)" (?read@optionspiston_file@@QEAAHAEAUinput_data@@@Z) already defined in caspar_input.lib(pistonoptions.obj); second definition ignored
+     1>fem.lib(operatingconditions.obj) : warning LNK4006: "private: static char const * * operatingconditions_file::kwds" (?kwds@operatingconditions_file@@0PAPEBDA) already defined in caspar_input.lib(operatingconditions.obj); second definition ignored
+     1>fem.lib(operatingconditions.obj) : warning LNK4006: "public: int __cdecl operatingconditions_file::read(struct input_data &)" (?read@operatingconditions_file@@QEAAHAEAUinput_data@@@Z) already defined in caspar_input.lib(operatingconditions.obj); second definition ignored
+     1>fem.lib(oil.obj) : warning LNK4006: "private: static char const * * oil_file::user_defined_kwds" (?user_defined_kwds@oil_file@@0PAPEBDA) already defined in caspar_input.lib(oil.obj); second definition ignored
+     1>fem.lib(oil.obj) : warning LNK4006: "private: static char const * * oil_file::general_kwds" (?general_kwds@oil_file@@0PAPEBDA) already defined in caspar_input.lib(oil.obj); second definition ignored
+     1>fem.lib(oil.obj) : warning LNK4006: "private: static char const * * oil_file::user_defined2_kwds" (?user_defined2_kwds@oil_file@@0PAPEBDA) already defined in caspar_input.lib(oil.obj); second definition ignored
+     1>fem.lib(oil.obj) : warning LNK4006: "private: static char const * * oil_file::constant_properties_kwds" (?constant_properties_kwds@oil_file@@0PAPEBDA) already defined in caspar_input.lib(oil.obj); second definition ignored
+     1>fem.lib(oil.obj) : warning LNK4006: "public: int __cdecl oil_file::read(struct input_data &)" (?read@oil_file@@QEAAHAEAUinput_data@@@Z) already defined in caspar_input.lib(oil.obj); second definition ignored
+     1>fem.lib(materials.obj) : warning LNK4006: "private: static char const * * materials_file::material_kwds" (?material_kwds@materials_file@@0PAPEBDA) already defined in caspar_input.lib(materials.obj); second definition ignored
+     1>fem.lib(materials.obj) : warning LNK4006: "public: int __cdecl materials_file::read(struct input_data &)" (?read@materials_file@@QEAAHAEAUinput_data@@@Z) already defined in caspar_input.lib(materials.obj); second definition ignored
+     1>fem.lib(lubricationmodule.obj) : warning LNK4006: "private: static char const * * lubricationmodule_file::kwds" (?kwds@lubricationmodule_file@@0PAPEBDA) already defined in caspar_input.lib(lubricationmodule.obj); second definition ignored
+     1>fem.lib(lubricationmodule.obj) : warning LNK4006: "public: int __cdecl lubricationmodule_file::read(struct input_data &)" (?read@lubricationmodule_file@@QEAAHAEAUinput_data@@@Z) already defined in caspar_input.lib(lubricationmodule.obj); second definition ignored
+     1>fem.lib(logger.obj) : warning LNK4006: "class logger inputlog" (?inputlog@@3Vlogger@@A) already defined in caspar_input.lib(logger.obj); second definition ignored
+     1>fem.lib(logger.obj) : warning LNK4006: "private: class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl logger::getcomputername(void)" (?getcomputername@logger@@AEAA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) already defined in caspar_input.lib(logger.obj); second definition ignored
+     1>fem.lib(logger.obj) : warning LNK4006: "private: class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl logger::workingdir(void)" (?workingdir@logger@@AEAA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) already defined in caspar_input.lib(logger.obj); second definition ignored
+     1>fem.lib(logger.obj) : warning LNK4006: "private: class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl logger::gettime(void)" (?gettime@logger@@AEAA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) already defined in caspar_input.lib(logger.obj); second definition ignored
+     1>fem.lib(logger.obj) : warning LNK4006: "public: class logger & __cdecl logger::operator<<(class std::basic_ostream<char,struct std::char_traits<char> > & (__cdecl*)(class std::basic_ostream<char,struct std::char_traits<char> > &))" (??6logger@@QEAAAEAV0@P6AAEAV?$basic_ostream@DU?$char_traits@D@std@@@std@@AEAV12@@Z@Z) already defined in caspar_input.lib(logger.obj); second definition ignored
+     1>fem.lib(logger.obj) : warning LNK4006: "public: __cdecl logger::~logger(void)" (??1logger@@QEAA@XZ) already defined in caspar_input.lib(logger.obj); second definition ignored
+     1>fem.lib(logger.obj) : warning LNK4006: "public: __cdecl logger::logger(bool)" (??0logger@@QEAA@_N@Z) already defined in caspar_input.lib(logger.obj); second definition ignored
+     1>fem.lib(inputfile.obj) : warning LNK4006: "protected: bool __cdecl input_file::read(char const *)" (?read@input_file@@IEAA_NPEBD@Z) already defined in caspar_input.lib(inputfile.obj); second definition ignored
+     1>fem.lib(inputfile.obj) : warning LNK4006: "protected: virtual int __cdecl input_file::check_sections(void)" (?check_sections@input_file@@MEAAHXZ) already defined in caspar_input.lib(inputfile.obj); second definition ignored
+     1>fem.lib(inputfile.obj) : warning LNK4006: "protected: __cdecl input_file::~input_file(void)" (??1input_file@@IEAA@XZ) already defined in caspar_input.lib(inputfile.obj); second definition ignored
+     1>fem.lib(inputfile.obj) : warning LNK4006: "protected: __cdecl input_file::input_file(char const *)" (??0input_file@@IEAA@PEBD@Z) already defined in caspar_input.lib(inputfile.obj); second definition ignored
+     1>fem.lib(input.obj) : warning LNK4006: "private: void __cdecl input::setdefaults(void)" (?setdefaults@input@@AEAAXXZ) already defined in caspar_input.lib(input.obj); second definition ignored
+     1>fem.lib(input.obj) : warning LNK4006: "public: __cdecl input::input(bool)" (??0input@@QEAA@_N@Z) already defined in caspar_input.lib(input.obj); second definition ignored
+     1>fem.lib(geometry.obj) : warning LNK4006: "private: static char const * * geometry_file::kwds" (?kwds@geometry_file@@0PAPEBDA) already defined in caspar_input.lib(geometry.obj); second definition ignored
+     1>fem.lib(geometry.obj) : warning LNK4006: "public: int __cdecl geometry_file::read(struct input_data &)" (?read@geometry_file@@QEAAHAEAUinput_data@@@Z) already defined in caspar_input.lib(geometry.obj); second definition ignored
+     1>fem.lib(blockoptions.obj) : warning LNK4006: "private: static char const * * optionsblock_file::fluidgrid_kwds" (?fluidgrid_kwds@optionsblock_file@@0PAPEBDA) already defined in caspar_input.lib(blockoptions.obj); second definition ignored
+     1>fem.lib(blockoptions.obj) : warning LNK4006: "private: static char const * * optionsblock_file::numeric_kwds" (?numeric_kwds@optionsblock_file@@0PAPEBDA) already defined in caspar_input.lib(blockoptions.obj); second definition ignored
+     1>fem.lib(blockoptions.obj) : warning LNK4006: "private: static char const * * optionsblock_file::position_kwds" (?position_kwds@optionsblock_file@@0PAPEBDA) already defined in caspar_input.lib(blockoptions.obj); second definition ignored
+     1>fem.lib(blockoptions.obj) : warning LNK4006: "private: static char const * * optionsblock_file::general_kwds" (?general_kwds@optionsblock_file@@0PAPEBDA) already defined in caspar_input.lib(blockoptions.obj); second definition ignored
+     1>fem.lib(blockoptions.obj) : warning LNK4006: "public: int __cdecl optionsblock_file::read(struct input_data &)" (?read@optionsblock_file@@QEAAHAEAUinput_data@@@Z) already defined in caspar_input.lib(blockoptions.obj); second definition ignored
+         thermal.vcxproj -> I:\localCopy\FSTI\piston\Caspar\main\x64\Release\thermal.lib
+       FinalizeBuildStatus:
+         Deleting file "x64\Release\thermal.unsuccessfulbuild".
+         Touching "x64\Release\thermal.lastbuildstate".
+     1>Done Building Project "I:\localCopy\FSTI\piston\Caspar\thermal\thermal.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:05.72

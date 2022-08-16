@@ -1,0 +1,1485 @@
+#include "CPistonGap.h"
+#include "../../caspar_input/input.h"
+#include "logger.h"
+#pragma once
+
+
+
+extern class CGapInput myGapInput;
+extern struct sGapResult myGapResult;
+extern class CGapUtils myGapUtils;
+extern class input myinput;
+
+//Solve Reynolds equation using GS SOR method
+void CPistonGap::PistonReynoldsGS(void)
+{
+	//cout<<"check before GS"<<"\n";
+	//SOR loop
+	double pn,ps,pe,pw;
+	double alpha = 1.8;
+	int iterations = 0;
+	int iter_max = 10000;
+	double R = 1.0;
+	pn = 0.0; ps = 0.0; pe = 0.0; pw = 0.0;
+	pcon.resize(pnew.size()); pcon = pnew;
+
+	//coefficient of mass conservation to calculate pressure in grooves: p = (C-A)/(B-D) --- Lizhi 03/17/2015
+	/*Array<double,1> A_groove;
+	Array<double,1> B_groove;
+	Array<double,1> C_groove;
+	Array<double,1> D_groove;
+	A_groove.resize(numgvlizhi);
+	B_groove.resize(numgvlizhi);
+	C_groove.resize(numgvlizhi);
+	D_groove.resize(numgvlizhi);
+
+	A_groove = 0;
+	B_groove = 0;
+	C_groove = 0;
+	D_groove = 0;*/
+
+
+	/*Array<double,1> ps_test;
+	Array<double,1> pn_test;
+	ps_test.resize(numgvlizhi);
+	pn_test.resize(numgvlizhi);*/
+
+	//Initialize the viscosity and density for mass conservation calculation --- Lizhi 03/17/2015
+	/*mu = 0;
+	rho = 0;
+	for(int i=0;i<Q;i++)
+	{
+		mu(Range(0,N*M-1)) += oilviscosity(Range(i*N*M,(i+1)*N*M-1));
+		rho(Range(0,N*M-1)) += oildensity(Range(i*N*M,(i+1)*N*M-1));
+	};
+	mu/=Q;
+	rho/=Q;*/
+
+	/*//Test MG
+	clock_t start,end,ticks;
+	start = clock();*/
+	do
+	{
+		FLAGlizhi=0; //FlAG > 0 means groove
+		for(int i=0;i<N*M;i++)
+		{
+			
+			//North
+			if(i%M==(M-1))
+			{
+				pn=0.0;
+			}
+			else
+			{
+				pn = pnew(i+1);
+			}
+			//South
+			if(i%M==0)
+			{
+				ps=0.0;
+			}
+			else
+			{
+				ps = pnew(i-1);
+			}
+			//East
+			if(i>=(N-1)*M)
+			{
+				pe = pnew(i-(N-1)*M);
+			}
+			else
+			{
+				pe = pnew(i+M);
+			}
+			//West
+			if(i<M)
+			{
+				pw = pnew(i+(N-1)*M);
+			}
+			else
+			{
+				pw = pnew(i-M);
+			}
+			
+			//SOR
+			//cout<<i<<"  "<<FLAGlizhi<<"\n";
+			if(FLAGlizhi==0)
+			{
+			pnew(i) = pnew(i) + alpha * ( ( ( an(i) * pn + as(i) * ps + ae(i) * pe + aw(i) * pw + b(i) ) / ap(i) ) - pnew(i) );
+			pnew(i) = pnew(i) < 1e4? 1e4:pnew(i);
+			}
+			else
+			{
+				pnew(i)=pgvlizhi(FLAGlizhi-1); //Groove pressure Lizhi
+			};
+
+			
+			for(int j=0;j<numgvlizhi;j++)
+			{
+				//Groove boundary recognition #1: next cell is south bound, next cell is out groove --- Lizhi 03/17/2015
+				if((i+1-slimitlizhi(j))%M==0 && i>0)
+				{
+					FLAGlizhi=0;
+					//cout<<"#1 "<<i<<"\n";
+				};
+				//Groove boundary recognition #2: this cell is north bound, next cell is in groove --- Lizhi 03/17/2015
+				if((i-nlimitlizhi(j))%M==0 && i>0)
+				{
+					FLAGlizhi=j+1;
+					pgvlizhi(j) -= 1.0 * Bs_g[j][(i-nlimitlizhi(j))/M] * (pnew(i) - pcon(i)) / (Cs_g(j) - Cn_g(j));
+					//cout<<"#2 "<<i<<"\n";
+					//cout<<i<<"---"<<ceil((i-nlimitlizhi(j))/M-0.5)<<"\n";
+					//cout<<"check pgvlizhi at north "<<pgvlizhi(0)<<"  "<<pnew(i)<<"\n";
+				};
+				//Groove boundary recognition #3: this cell is south bound --- Lizhi 03/17/2015
+				if((i-slimitlizhi(j))%M==0 && i>0)
+				{
+					pgvlizhi(j) += 1.0 * Bn_g[j][(i-slimitlizhi(j))/M] * (pnew(i) - pcon(i)) / (Cs_g(j) - Cn_g(j));
+					//cout<<"#3 "<<i<<"\n";
+					//cout<<"check pgvlizhi at south "<<pgvlizhi(0)<<"  "<<pnew(i)<<"\n";
+				};
+				//If groove is connect to the DC, overwrite the groove pressure to DC pressure
+				if(cgvlizhi(j) == 3)
+				{
+					pgvlizhi(j) = operatingpistongap.pDC;
+				}
+			};
+		}
+		//Lizhi do test here
+		/*Array<double,1> pgvlizhi_test;
+		pgvlizhi_test.resize(numgvlizhi);
+		for(int j=0;j<numgvlizhi;j++)
+		{
+			pgvlizhi_test(j) = (C_groove(j) - A_groove(j)) / (B_groove(j) - D_groove(j));
+			cout<<"pgv("<<j<<") = "<<pgvlizhi(j)<<"; pgv_test("<<j<<") = "<<pgvlizhi_test(j)<<"\n";
+		}
+		//This is the real thing
+		for(int j=0;j<numgvlizhi;j++)
+		{
+			pnew(nlimitlizhi(j)+1) = pnew(nlimitlizhi(j)+1) + alpha * ((C_groove(j) - A_groove(j)) / (B_groove(j) - D_groove(j)) - pnew(nlimitlizhi(j)+1));
+			//cout<<"pgv("<<j<<") = "<<pgvlizhi(j)<<"\n";
+			for(int i=0;i<N;i++)
+				for(int ii=nlimitlizhi(j)+1;ii<slimitlizhi(j);ii++)
+					pnew(i*M+ii) = pnew(nlimitlizhi(j)+1);
+		}*/
+
+
+
+
+		//Counter
+		iterations++;
+
+		//Residual GS
+		PistonReynoldsCalcResidualGS(R);
+		//Log<<R<<"\n";
+		//cout<<"R = "<<R<<"\n";
+		//for(int j=0;j<numgvlizhi;j++)
+		//	cout<<"trouble("<<j<<") = "<<(C_groove(j) - A_groove(j)) / (B_groove(j) - D_groove(j)) - (pgvlizhi(j) - alpha * ((C_groove(0) - A_groove(0)) / (B_groove(0) - D_groove(0))))/(1 - alpha)<<"\n";
+		//Residual in MPa
+	}while(R > (Rmin_R * 1e6) && iterations < iter_max);
+
+	//if(numgvlizhi > 0)
+	//	cout<<"check pgvlizhi "<<pgvlizhi(0)<<"\n";
+
+
+	/*//Test MG
+	end = clock();
+	ticks = end - start;
+	double time = ticks / (double) CLOCKS_PER_SEC;
+
+	fout.open("./outputs_piston/nGS.dat");
+	fout << iterations << "\n";
+	fout.close();
+
+	fout.open("./outputs_piston/tGS.dat");
+	fout << time << "\n";
+	fout.close();*/
+
+
+	//Log
+	if(iterations>=iter_max)
+	{
+		fout.open("./output/piston/matlab/PistonGapLoopLog.txt",ios::app);
+		fout << "Max Number of Iterations Reached in Reynolds Equation Loop" << "\n";
+		fout << "Shaft Angle: " << "\t" << operatingpistongap.phi_rad*180/PI << "\n";
+		fout << "Residual: " << "\t" << R << "\n";
+		fout << " " << "\n";
+		fout.close();
+		fout.clear();
+	}
+
+	Averagepressure();
+
+	//Limit pressure
+	/*if(PressureDeformation)
+	{
+		p = where(pnew>1.0e9,1.0e9,pnew);
+	}
+	else
+	{
+		p = where(pnew>1.0e9,1.0e9,pnew);
+	};*/
+
+
+	//p = where(p<1.0e4,1.0e4,p);
+
+
+	/*//Test MG
+	fout.open("./outputs_piston/pGS.dat");
+	for(int i = 0; i < N ; i++)
+	{
+		for(int j = 0; j < M ; j++)
+        {
+			fout << scientific << pnew(j+i*M)*1.0e-5 << "\t" ;
+        }
+		fout << "\n";
+	}
+	fout.close();
+	fout.clear();
+	system("PAUSE");*/
+	//cout<<"check after GS"<<"\n";
+};
+
+//Calculate Reynolds diffusive coeffcients and source term
+void CPistonGap::PistonReynoldsCalcCoefficientsGS(double dt)
+{
+	//cout<<"check before GS coefficient"<<"\n";
+	double vK,omega,speedK,pDC,pCase;
+	Range all = Range::all( );
+
+	//Geometry
+	vK = operatingpistongap.vK;				
+	omega = operatingpistongap.omega;		
+	speedK = operatingpistongap.speedK;
+	
+	//Initializing the pressure 2D vector 
+	pDC = operatingpistongap.pDC;
+	pCase = operatingpistongap.pCase;
+	mu = 0;
+	rho2d.resize(N*M);
+	rho2d = 0;
+
+	for(int i=0;i<Q;i++)
+	{
+		mu(Range(0,N*M-1)) += oilviscosity(Range(i*N*M,(i+1)*N*M-1));
+		rho2d(Range(0,N*M-1)) += oildensity(Range(i*N*M,(i+1)*N*M-1));
+	};
+	mu/=Q;
+	rho2d/=Q;
+	//Face diffusivity values
+	double mun,mus,mue,muw,hKn,hKs,hKe,hKw,hn,hs,he,hw,hp,dhKx,dhKy,defsqueezeK,defsqueezeB,expansion,rhon,rhos,rhoe,rhow,rhop,hn_old,hs_old,he_old,hw_old;
+	if(numgvlizhi > 0)
+	{
+	As_g.resize(numgvlizhi);
+	An_g.resize(numgvlizhi);
+	Cs_g.resize(numgvlizhi);
+	Cn_g.resize(numgvlizhi);
+	As_g = 0;
+	An_g = 0;
+	Cs_g = 0;
+	Cn_g = 0;
+	Bs_g.resize(numgvlizhi, vector<double>(N,0));
+	Bn_g.resize(numgvlizhi, vector<double>(N,0));
+	Bsps.resize(numgvlizhi);
+	Bnpn.resize(numgvlizhi);	
+	Bsps = 0;
+	Bnpn = 0;
+	}
+	//double hplus = 0;//lizhi study step profile here
+	b = 0.0;
+	for(int i=0;i<N*M;i++)
+	{
+
+		rhop = rho2d(i);
+		mun = mu_n(i);
+		rhon = rho_n(i);
+		mus = mu_s(i);
+		rhos = rho_s(i);
+		mue = mu_e(i);
+		rhoe = rho_e(i);
+		muw = mu_w(i);
+		rhow = rho_w(i);
+		//hp = h(i);
+		//North
+		if(i%M==(M-1))
+		{
+			//mun = mu(i);
+			hn = h(i);
+			hn_old = h_pre(i);
+			//rhon = rho2d(i);
+			hKn = hK(i);
+		}
+		else
+		{
+			//mun = 0.5*( mu(i) + mu(i+1) );
+			hn = 0.5*( h(i) + h(i+1) );
+			hn_old = 0.5*( h_pre(i) + h_pre(i+1) );
+			//rhon = 0.5*( rho2d(i) + rho2d(i+1) );
+			hKn = 0.5*( hK(i) + hK(i+1) );
+		}
+		//South
+		if(i%M==0)
+		{
+			//mus = mu(i);
+			hs = h(i);
+			hs_old = h_pre(i);
+			//rhos = rho2d(i);
+			hKs = hK(i);
+		}
+		else
+		{
+			//mus = 0.5*( mu(i) + mu(i-1) );
+			hs = 0.5*( h(i) + h(i-1) );
+			hs_old = 0.5*( h_pre(i) + h_pre(i-1) );
+			//rhos = 0.5*( rho2d(i) + rho2d(i-1) );
+			hKs = 0.5*( hK(i) + hK(i-1) );
+		}
+		//East
+		if(i>=(N-1)*M)
+		{
+			//mue = 0.5*( mu(i) + mu(i-(N-1)*M) );
+			he = 0.5*( h(i) + h(i-(N-1)*M) );
+			he_old = 0.5*( h_pre(i) + h_pre(i-(N-1)*M) );
+			//rhoe = 0.5*( rho2d(i) + rho2d(i-(N-1)*M) );
+			hKe = 0.5*( hK(i) + hK(i-(N-1)*M) );
+		}
+		else
+		{
+			//mue = 0.5*( mu(i) + mu(i+M) );
+			he = 0.5*( h(i) + h(i+M) );
+			he_old = 0.5*( h_pre(i) + h_pre(i+M) );
+			//rhoe = 0.5*( rho2d(i) + rho2d(i+M) );
+			hKe = 0.5*( hK(i) + hK(i+M) );
+		}
+		//West
+		if(i<M)
+		{
+			//muw = 0.5*( mu(i) + mu(i+(N-1)*M) );
+			hw = 0.5*( h(i) + h(i+(N-1)*M) );
+			hw_old = 0.5*( h_pre(i) + h_pre(i+(N-1)*M) );
+			//rhow = 0.5*( rho2d(i) + rho2d(i+(N-1)*M) );
+			hKw = 0.5*( hK(i) + hK(i+(N-1)*M) );
+		}
+		else
+		{
+			//muw = 0.5*( mu(i) + mu(i-M) );
+			hw = 0.5*( h(i) + h(i-M) );
+			hw_old = 0.5*( h_pre(i) + h_pre(i-M) );
+			//rhow = 0.5*( rho2d(i) + rho2d(i-M) );
+			hKw = 0.5*( hK(i) + hK(i-M) );
+		}
+
+		hp = (hs + hn + he + hw) / 4;
+		double h_old = (hs_old + hn_old + he_old + hw_old) / 4;
+		//Sharp the step boundary - Lizhi
+		/*if(myinput.data.options_piston.numeric.stploc > 0)
+		{
+			if(i%M==(M-1-stepboundary))
+			{
+				hs -= myinput.data.options_piston.numeric.stpdep/2;
+			};
+
+			if(i%M==(M-1-stepboundary-1))
+			{
+				hn += myinput.data.options_piston.numeric.stpdep/2;
+			};
+		}*/
+
+		//North
+		an(i) = rhon*pow(hn,3.0)*dx / (dy*6.0*mun);
+		//Dirichlet boundary
+		if(i%M==(M-1) && i>0)
+		{
+			an(i) *= 2.0;
+			b(i) += an(i)*pCase;
+		};
+
+		//South
+		as(i) = rhos*pow(hs,3.0)*dx / (dy*6.0*mus);
+		//Dirichlet boundary
+		if(i%M==0)
+		{
+			as(i) *= 2.0;
+			b(i) += as(i)*pDC;
+		};
+
+		//East
+		ae(i) = rhoe*pow(he,3.0)*dy / (dx*6.0*mue);
+		//West
+		aw(i) = rhow*pow(hw,3.0)*dy / (dx*6.0*muw);
+		//Point
+		ap(i) = an(i) + as(i) + ae(i) + aw(i);
+		//Gradients sliding part
+		dhKx = (hKe - hKw)/dx;
+		dhKy = (hKn - hKs)/dy;
+		//Change in deformation
+		defsqueezeK = (CPistonGap::defK_p_gap(i) - CPistonGap::defK_p_gap_squeeze(i))/dt;
+		defsqueezeB = (CPistonGap::defB_p_gap(i) - CPistonGap::defB_p_gap_squeeze(i))/dt;
+		expansion = -1 * (rho2d(i) - CPistonGap::density_expansion(i))/dt;
+		//Source
+		int Reynolds_mode;
+		Reynolds_mode = 1;
+		if(Reynolds_mode == 0)
+		{
+			if(hp > geometrypistongap.hmin)
+				dht_total(i) = dht(i) + speedK * omega * rK * dhKx + vK * dhKy;// + defsqueezeK - defsqueezeB;
+			else
+				dht_total(i) = 0;
+			b(i) += ( - speedK * omega * rK * (rhoe*he - rhow*hw)/dx - vK * (rhon*hn - rhos*hs)/dy 
+				+ 2.0 * rhop * dht_total(i) - 2.0 * (hp * expansion) ) * dx * dy;
+		}
+		else if(Reynolds_mode == 1)
+		{
+			if(h_pre(i) < geometrypistongap.hmin)
+				dht_total(i) = dht(i) + speedK * omega * rK * dhKx + vK * dhKy + defsqueezeK - defsqueezeB;
+			else
+				dht_total(i) = (h_old - hp) / dt; //CAUTION positive dht is reducing gap height --- squeezing
+			b(i) += ( - speedK * omega * rK * (rhoe*he - rhow*hw)/dx - vK * (rhon*hn - rhos*hs)/dy 
+				+ 2.0 * rhop * dht_total(i) - 2.0 * (hp * expansion) ) * dx * dy;
+		}
+		//Groove coefficient
+		if(numgvlizhi > 0)
+		{
+			for(int j=0;j<numgvlizhi;j++)
+			{
+				//Groove boundary recognition #2: this cell is north bound, next cell is in groove --- Lizhi 03/17/2015
+				if((i-nlimitlizhi(j))%M==0 && i>0)
+				{
+					//FLAGlizhi=j+1;
+					As_g(j) += 6 * vK * rho2d(i) * h(i);
+					//cout<<"i = "<<i<<"\n";
+					//cout<<"rho "<<rho2d(i)<<"; mu "<<mu(i)<<"\n";
+					//cout<<"h = "<<h(i)<<"\n";
+					//cout<<"As = "<<As_g(0)<<"\n";
+					Cs_g(j) += -1/dy * rho2d(i) * h(i) * h(i) * h(i) / mu(i);
+					//cout<<"Cs = "<<Cs_g(0)<<"\n";
+					Bs_g[j][(i-nlimitlizhi(j))/M] = 1/dy * rho2d(i) * h(i) * h(i) * h(i) / mu(i);
+					//cout<<"Bs_g["<<j<<"]["<<(i-nlimitlizhi(j))/M<<"] "<<Bs_g[j][(i-nlimitlizhi(j))/M]<<"\n";
+					Bsps(j) += 1/dy * rho2d(i) * pnew(i) * h(i) * h(i) * h(i) / mu(i);
+					//cout<<"Bsps = "<<Bsps(0)<<"\n";
+				};
+				//Groove boundary recognition #3: this cell is south bound --- Lizhi 03/17/2015
+				if((i-slimitlizhi(j))%M==0 && i>0)
+				{
+					An_g(j) += 6 * vK * rho2d(i) * h(i);
+					//cout<<"i = "<<i<<"\n";
+					//cout<<"rho "<<rho2d(i)<<"; mu "<<mu(i)<<"\n";
+					//cout<<"h = "<<h(i)<<"\n";
+					//cout<<"An = "<<An_g(0)<<"\n";
+					Cn_g(j) += 1/dy * rho2d(i) * h(i) * h(i) * h(i) / mu(i);
+					//cout<<"Cn = "<<Cn_g(0)<<"\n";
+					Bn_g[j][(i-slimitlizhi(j))/M] = -1/dy * rho2d(i) * h(i) * h(i) * h(i) / mu(i);
+					//cout<<"Bn_g["<<j<<"]["<<(i-slimitlizhi(j))/M<<"] "<<Bn_g[j][(i-slimitlizhi(j))/M]<<"\n";
+					Bnpn(j) += -1/dy * rho2d(i) * pnew(i) * h(i) * h(i) * h(i) / mu(i);
+					//cout<<"Bnpn = "<<Bnpn(0)<<"\n";
+				};
+			};
+		};
+	};
+	for(int j=0;j<numgvlizhi;j++)
+	{
+		pgvlizhi(j) = (An_g(j) - As_g(j) + Bnpn(j) - Bsps(j))/(Cs_g(j) - Cn_g(j));
+		/*cout<<"An_g("<<j<<") = "<<An_g(j)<<"\n";
+		cout<<"As_g("<<j<<") = "<<As_g(j)<<"\n";
+		cout<<"Cn_g("<<j<<") = "<<Cn_g(j)<<"\n";
+		cout<<"Cs_g("<<j<<") = "<<Cs_g(j)<<"\n";
+		cout<<"Bnpn("<<j<<") = "<<Bnpn(j)<<"\n";
+		cout<<"Bsps("<<j<<") = "<<Bsps(j)<<"\n";*/
+		//cout<<"check pgvlizhi("<<j<<") = "<<pgvlizhi(j)/1e5<<" [bar]"<<"\n";
+	}
+
+};
+//Calculate Reynolds residual for GS SOR method
+void CPistonGap::PistonReynoldsCalcResidualGS(double &R)
+{
+
+	R = max(fabs(pcon - pnew));
+
+	pcon = pnew;
+
+	/*double pn,ps,pe,pw;
+
+	FLAGlizhi=0;
+
+	//Calculate residual field
+	r_p = 0.0;
+	for(int i=0;i<N*M;i++)
+	{
+		//North
+		if(i%M==(M-1) && i>0)
+		{
+			pn = 0.0;
+		}
+		else
+		{
+			pn = pnew(i+1);
+		}
+		//South
+		if(i%M==0)
+		{
+			ps = 0.0;
+		}
+		else
+		{
+			ps = pnew(i-1);
+		}
+		//East
+		if(i>=(N-1)*M)
+		{
+			pe = pnew(i-(N-1)*M);
+		}
+		else
+		{
+			pe = pnew(i+M);
+		}
+		//West
+		if(i<M)
+		{
+			pw = pnew(i+(N-1)*M);
+		}
+		else
+		{
+			pw = pnew(i-M);
+		}
+
+		//Groove boundary recognition #1 Lizhi
+		if(numgvlizhi > 0)
+		{
+		for(int j=0;j<numgvlizhi;j++)
+		{
+			if((i-slimitlizhi(j))%M==0)
+			{
+				FLAGlizhi=0;
+			};
+		};
+		};
+		
+		//Residual LIZHI
+		r_p(i) = b(i)  - ( ap(i) * pnew(i) - an(i) * pn - as(i) * ps - ae(i) * pe - aw(i) * pw  );
+
+		if(FLAGlizhi)
+			{
+				r_p(i) = 0;//residual is 0 in groove
+			}
+		
+		//Groove boundary recognition #2 Lizhi		
+		if(numgvlizhi > 0)
+		{
+		for(int j=0;j<numgvlizhi;j++)
+			{
+				if((i-nlimitlizhi(j))%M==0)
+				{
+					FLAGlizhi=j+1;
+				};
+			};
+		};
+
+	};
+
+	//Calculate scaled residual
+	R = 0.0;
+	double n = sum(fabs(r_p));
+	double d = sum(fabs(ap*pnew));
+	//Test MG
+	double n = sqrt(sum(pow(r_p,2.0)));
+	double d = sqrt(sum(pow(b,2.0)));
+	R = n/d;
+	*/
+
+
+}
+//Solve Energy equation using GS SOR method
+void CPistonGap::PistonEnergyGS(double dt) 
+{
+	double cp,alpha,lambda,TDC,TCase,phi;
+
+	//Fluid properties
+	lambda = my_oil -> get_lambda();//oilpistongap.oillambda;
+	//cp = my_oil -> get_C();//oilpistongap.oilC;
+	cp = 2.0416e3;
+	//Boundaries
+	phi = operatingpistongap.phi_rad * 180.0/PI;
+	if(phi < 180.0)
+	{
+		TDC = temperaturepistongap.THP;
+	}
+	else
+	{
+		TDC = temperaturepistongap.TLP;
+	}
+	TCase = temperaturepistongap.TCase;
+
+	//Source term
+	bE = oilviscosity * ( pow(dvxz,2.0) + pow(dvyz,2.0) ) * dx * dy * dz2;
+	//Diffusive coefficients
+	Dx = lambda*dy*dz2 / dx;
+	Dy = lambda*dx*dz2 / dy;
+	Dz = lambda*dx*dy / dz2;
+	//Convective coefficients
+	Fx = oildensity * cp * vx * dy * dz2;
+	Fy = oildensity * cp * vy * dx * dz2;
+	//Peclet number
+	Px = Fx / Dx;
+	Py = Fy / Dy;
+	//Power Law Scheme (Patankar Book)
+	Ax = pow((1 - 0.1*fabs(Px)),5.0);
+	Ax = max(Ax,0.0);
+	Ay = pow((1 - 0.1*fabs(Py)),5.0);
+	Ay = max(Ay,0.0);
+	//Spatial coefficients
+	anE = Ay * Dy + max(-1.0 * Fy,0.0); 
+    asE = Ay * Dy + max(Fy,0.0);
+    aeE = Ax * Dx + max(-1.0 * Fx,0.0); 
+    awE = Ax * Dx + max(Fx,0.0); 
+	atE = Dz;
+	abE = Dz;
+	apE = anE + asE + aeE + awE + atE + abE;
+	
+	//SOR Loop
+	Tnew = T;
+	alpha = 1.3;
+	int iterations = 0;
+	int iter_max = 10000;
+	double R = 1.0;
+	double Tn,Ts,Te,Tw,Tt,Tb;
+	double Pn,Ps,Pe,Pw;
+	do
+	{
+
+		int q=0;
+		//SOR
+		for(int i=0;i<N*M*Q;i++)
+		{
+			if(i%(N*M)==0)
+			{
+				q++;
+			}
+			//North
+			if(i%M==(M-1) && i>0)
+			{
+				Tn = TCase;
+				Pn = operatingpistongap.pCase;
+			}
+			else
+			{
+				Tn = Tnew(i+1);
+				Pn = ploop(i%(N*M) + 1);
+			}
+			//South
+			if(i%M==0)
+			{
+				Ts = TDC;
+				Ps = operatingpistongap.pDC;
+			}
+			else
+			{
+				Ts = Tnew(i-1);
+				Ps = ploop(i%(N*M) - 1);
+			}
+
+			//East
+			if(i>=q*(N-1)*M)
+			{
+				Te = Tnew(i-(N-1)*M);
+				Pe = ploop(i%(N*M) - (N-1)*M);
+			}
+			else
+			{
+				Te = Tnew(i+M);
+				Pe = ploop(i%(N*M) + M);
+			}
+			//West
+			if(i<M+(q-1)*N*M)
+			{
+				Tw = Tnew(i+(N-1)*M);
+				Pw = ploop(i%(N*M) + (N-1)*M);
+			}
+			else
+			{
+				Tw = Tnew(i-M);
+				Pw = ploop(i%(N*M) - M);
+			}
+
+			//Top
+			if(i>=N*M*(Q-1))
+			{
+				Tt = TK_surf_gap(i-N*M*(Q-1));
+			}
+			else
+			{
+				Tt = Tnew(i+N*M);
+			}
+			//Bottom
+			if(i<N*M)
+			{
+				Tb = TB_surf_gap(i);
+			}
+			else
+			{
+				Tb = Tnew(i-N*M);
+			}
+			//bE(i) += ((Pn - Ps)/dy/2 * vy(i) + (Pe - Pw)/dx/2 * vx(i)) * dx * dy * dz2(i);
+			//bE(i) += (ploop(i%(N*M)) - ploop_old(i%(N*M))) / dt * dx * dy * dz2(i);
+
+			//SOR
+			Tnew(i) += alpha * ( ( ( anE(i) * Tn + asE(i) * Ts + aeE(i) * Te + awE(i) * Tw + atE(i) * Tt + abE(i) * Tb + bE(i) ) / apE(i) ) - Tnew(i) );
+			//cout<<"bE("<<i<<") "<<bE(i)<<"   Tnew("<<i<<") "<<Tnew(i)<<"\n";
+		};
+
+		//Counter
+		iterations++;
+
+		//Residual GS
+		PistonEnergyCalcResidualGS(R);
+
+	}while(R > Rmin_E && iterations < iter_max);
+
+
+	//Log
+	if(iterations>=iter_max)
+	{
+		fout.open("./output/piston/matlab/PistonGapLoopLog.txt",ios::app);
+		fout << "Max Number of Iterations Reached in Energy Equation Loop" << "\n";
+		fout << "Shaft Angle: " << "\t" << operatingpistongap.phi_rad*180/PI << "\n";
+		fout << "Residual: " << "\t" << R << "\n";
+		fout << " " << "\n";
+		fout.close();
+		fout.clear();
+	};
+
+	//Assign temperature
+	T = Tnew;
+
+	// generate 2d temperature field Lizhi
+	T_2d = 0;
+	phiD_2d = 0;
+	for(int i=0;i<Q;i++)
+	{
+		T_2d(Range(0,N*M-1)) += T(Range(i*N*M,(i+1)*N*M-1));
+		phiD_2d(Range(0,N*M-1)) += phiD(Range(i*N*M,(i+1)*N*M-1));
+	};
+
+	
+	T_2d/=Q;
+	phiD_2d/=Q;
+
+};
+//Solve Energy equation using the film property on the edge of the fluid grid GS SOR method
+void CPistonGap::PistonEnergyGSedge(double dt) 
+{
+	double cp,alpha,lambda,TDC,TCase,phi,cT;
+
+	//Fluid properties
+	lambda = my_oil -> get_lambda();//oilpistongap.oillambda;
+	cp = my_oil -> get_C();//oilpistongap.oilC;
+	cT = my_oil -> get_CT();
+
+	//cp = 2.0414e3; cp used when develop
+
+	//Boundaries
+	phi = operatingpistongap.phi_rad * 180.0/PI;
+	if(phi < 180.0)
+	{
+		TDC = temperaturepistongap.THP;
+	}
+	else
+	{
+		TDC = temperaturepistongap.TLP;
+	}
+	TCase = temperaturepistongap.TCase;
+
+	//Source term
+	//&CPistonGap::Pistonenergydissipation;
+	Pistonenergydissipation();//dz is included in phid, so phiD here and below is acturally phiD * dz
+	bE = oilviscosity * phiD * dx * dy; // * dz2;
+	//bE = oilviscosity * ( pow(dvxz,2.0) + pow(dvyz,2.0) ) * dx * dy * dz2;
+	//Diffusive coefficients
+	/*Dx = lambda*dy*dz2 / dx;
+	Dy = lambda*dx*dz2 / dy;
+	Dz = lambda*dx*dy / dz2;
+	//Convective coefficients
+	Fx = oildensity * cp * vx * dy * dz2;
+	Fy = oildensity * cp * vy * dx * dz2;
+	//Peclet number
+	Px = Fx / Dx;
+	Py = Fy / Dy;
+	//Power Law Scheme (Patankar Book)
+	Ax = pow((1 - 0.1*fabs(Px)),5.0);
+	Ax = max(Ax,0.0);
+	Ay = pow((1 - 0.1*fabs(Py)),5.0);
+	Ay = max(Ay,0.0);
+	//Spatial coefficients
+	anE = Ay * Dy + max(-1.0 * Fy,0.0); 
+    asE = Ay * Dy + max(Fy,0.0);
+    aeE = Ax * Dx + max(-1.0 * Fx,0.0); 
+    awE = Ax * Dx + max(Fx,0.0); 
+	atE = lambda*dx*dy / dz2;
+	abE = lambda*dx*dy / dz2;
+	apE = anE + asE + aeE + awE + atE + abE;*/
+
+	//coefficents
+	for(int q=0;q<Q;q++)
+	{
+		for(int n=0;n<N;n++)
+		{
+			for(int m=0;m<M;m++)
+			{
+				double rho_n = 0;
+				double rho_s = 0;
+				double rho_e = 0;
+				double rho_w = 0;
+				double z_n = 0;
+				double z_s = 0;
+				double z_e = 0;
+				double z_w = 0;
+				double v_n = 0;
+				double v_s = 0;
+				double v_e = 0;
+				double v_w = 0;
+				double D_n, D_s, D_e, D_w, F_n, F_s, F_e, F_w, A_n, A_s, A_e, A_w;
+				double p_n, p_s, p_e, p_w;
+				int i_3d = M*N*q + M*n + m;
+				int i_2d = M*n + m;
+				v_s = vy_edge(i_3d);
+				v_w = vx_edge(i_3d);
+				if(m==0)//south bound
+				{
+					rho_s = oildensity(i_3d);
+					z_s = dz2(i_3d);
+					p_s = operatingpistongap.pDC;
+				}
+				else
+				{
+					rho_s = (oildensity(i_3d) + oildensity(i_3d - 1)) / 2;
+					z_s = (dz2(i_3d) + dz2(i_3d - 1)) / 2;
+					p_s = (pnew(i_2d) + pnew(i_2d - 1)) / 2;
+				}
+				if(m==M-1)//north bound
+				{
+					rho_n = oildensity(i_3d);
+					z_n = dz2(i_3d);
+					v_n = vy_edge_case(i_3d);
+					p_n = operatingpistongap.pCase;
+				}
+				else
+				{
+					rho_n = (oildensity(i_3d) + oildensity(i_3d + 1)) / 2;
+					z_n = (dz2(i_3d) + dz2(i_3d + 1)) / 2;
+					v_n = vy_edge(i_3d + 1);
+					p_n = (pnew(i_2d) + pnew(i_2d + 1)) / 2;
+				}
+				if(n==0)//west bound
+				{
+					rho_w = (oildensity(i_3d) + oildensity(i_3d + (N-1)*M)) / 2;
+					z_w = (dz2(i_3d) + dz2(i_3d + (N-1)*M)) / 2;
+					p_w = (pnew(i_2d) + pnew(i_2d + (N-1)*M)) / 2;
+				}
+				else
+				{
+					rho_w = (oildensity(i_3d) + oildensity(i_3d - M)) / 2;
+					z_w = (dz2(i_3d) + dz2(i_3d - M)) / 2;
+					p_w = (pnew(i_2d) + pnew(i_2d - M)) / 2;
+				}
+				if(n==N-1)//east bound
+				{
+					rho_e = (oildensity(i_3d) + oildensity(i_3d - (N-1)*M)) / 2;
+					z_e = (dz2(i_3d) + dz2(i_3d - (N-1)*M)) / 2;
+					v_e = vx_edge(i_3d - (N-1)*M);
+					p_e = (pnew(i_2d) + pnew(i_2d - (N-1)*M)) / 2;
+				}
+				else
+				{
+					rho_e = (oildensity(i_3d) + oildensity(i_3d + M)) / 2;
+					z_e = (dz2(i_3d) + dz2(i_3d + M)) / 2;
+					v_e = vx_edge(i_3d + M);
+					p_e = (pnew(i_2d) + pnew(i_2d + M)) / 2;
+				}
+
+				double dz_mean;
+				dz_mean = (z_e + z_w + z_n + z_s) / 4;
+
+				
+				double dmdt;
+				//dmdt = dht_total(i_2d) / Q * dx *dy * oildensity(i_3d);
+				dmdt = rho_e * v_e * dy * z_e 
+					- rho_w * v_w * dy * z_w 
+					+ rho_n * v_n * dx * z_n 
+					- rho_s * v_s * dx * z_s;
+
+				//when pressure is lower than 0.1bar, the mass conservation is not fulfilled in Reynolds. Fix dmdt = 0 at p<0.1bar
+				if(p_e < 1e4 || p_w < 1e4 || p_n < 1e4 || p_s < 1e4 || pnew(i_2d) < 1e4 || ploop(i_2d) < 1e4 || ploop_old(i_2d) < 1e4)
+				{
+					
+					double temp;
+
+					temp = (v_e * z_e * rho_e + v_w * z_w * rho_w) / 2;
+					v_e = temp / z_e / rho_e; v_w = temp / z_w / rho_w;
+					temp = (v_n * z_n * rho_n + v_s * z_s * rho_s) / 2;
+					v_n = temp / z_n / rho_n; v_s = temp / z_s / rho_s;
+
+					dmdt = 0;
+	
+				}
+
+				//double temp;
+
+				//temp = (v_e * z_e + v_w * z_w) / 2;
+				//v_e = temp / z_e; v_w = temp / z_w;
+				//temp = (v_n * z_n + v_s * z_s) / 2;
+				//v_n = temp / z_n; v_s = temp / z_s;
+
+				//rho_e = oildensity(i_3d);
+				//rho_w = oildensity(i_3d);
+				//rho_n = oildensity(i_3d);
+				//rho_s = oildensity(i_3d);
+
+
+				//convection
+				F_e = rho_e * cp * v_e * dy * z_e;
+				F_w = rho_w * cp * v_w * dy * z_w;
+				F_n = rho_n * cp * v_n * dx * z_n;
+				F_s = rho_s * cp * v_s * dx * z_s;
+				//conduction
+				D_e = lambda * dy * z_e / dx;
+				D_w = lambda * dy * z_w / dx;
+				D_n = lambda * dx * z_n / dy;
+				D_s = lambda * dx * z_s / dy;
+				//Power Law Scheme (Patankar Book)
+				A_e = max(0.0,pow((1-0.1*fabs(F_e/D_e)),5));
+				A_w = max(0.0,pow((1-0.1*fabs(F_w/D_w)),5));
+				A_n = max(0.0,pow((1-0.1*fabs(F_n/D_n)),5));
+				A_s = max(0.0,pow((1-0.1*fabs(F_s/D_s)),5));
+				//Spatial coefficients at w e n s
+				aeE(i_3d) = D_e * A_e + max(0.0,-1*F_e);
+				awE(i_3d) = D_w * A_w + max(0.0,F_w);
+				anE(i_3d) = D_n * A_n + max(0.0,-1*F_n);
+				asE(i_3d) = D_s * A_s + max(0.0,F_s);
+				//double cT = 9.0447e-4; hardcoded when developing
+				//double h_0 = 3.6159e5; was not used in this version
+				double specific_v = 1 / oildensity(i_3d);
+				//enthalpy change due to convection on the cell wall (pressure only, temperature is already considered)
+				bE(i_3d) -= rho_e * cT * v_e * dy * z_e * p_e;
+				bE(i_3d) -= -1 * rho_w * cT * v_w * dy * z_w * p_w;
+				bE(i_3d) -= rho_n * cT * v_n * dx * z_n * p_n;
+				bE(i_3d) -= -1 * rho_s * cT * v_s * dx * z_s * p_s;
+<<<<<<< HEAD
+
+				bE(i_3d) -= rho_e * v_e * dy * z_e * (ploop(i_2d) - p_e) * specific_v / 2;
+				bE(i_3d) -= -1 * rho_w * v_w * dy * z_w * (ploop(i_2d) - p_w) * specific_v / 2;
+				bE(i_3d) -= rho_n * v_n * dx * z_n * (ploop(i_2d) - p_n) * specific_v / 2;
+				bE(i_3d) -= -1 * rho_s * v_s * dx * z_s * (ploop(i_2d) - p_s) * specific_v / 2;
+
+				atE(i_3d) = lambda*dx*dy / dz2(i_3d);
+				abE(i_3d) = lambda*dx*dy / dz2(i_3d);
+
+				double dmdt;
+				dmdt = dht_total(i_2d) / Q * dx *dy * oildensity(i_3d);
+
+				bE(i_3d) += ((dx * dy * dz2(i_3d)) * oildensity(i_3d) + dmdt * dt) / oildensity(i_3d) * (ploop(i_2d) - ploop_old(i_2d)) / dt;
+=======
+				//enthalpy change due to flow through pressure gradient
+				bE(i_3d) -= rho_e * v_e * dy * z_e * (pnew(i_2d) - p_e) * specific_v;
+				bE(i_3d) -= -1 * rho_w * v_w * dy * z_w * (pnew(i_2d) - p_w) * specific_v;
+				bE(i_3d) -= rho_n * v_n * dx * z_n * (pnew(i_2d) - p_n) * specific_v;
+				bE(i_3d) -= -1 * rho_s * v_s * dx * z_s * (pnew(i_2d) - p_s) * specific_v;
+				//Spatial coefficients at t and b
+				atE(i_3d) = lambda*dx*dy / dz_mean;
+				abE(i_3d) = lambda*dx*dy / dz_mean;
+				// 1/2 of the conduction on top and bottom layer of the fluid considered since the solid surface temperature is considered, which is not located at the center of the neighbor but the wall
+				if(q==(Q-1))
+				{
+					atE(i_3d) *= 2;
+				}
+>>>>>>> origin/master
+
+				if(q==0)
+				{
+					abE(i_3d) *= 2;
+				}
+				// enthalpy change due to compression and expansion from previous time step to current
+				bE(i_3d) += ((dx * dy * dz_mean) * oildensity(i_3d) + dmdt * dt) * specific_v * (ploop(i_2d) - ploop_old(i_2d)) / dt;
+				// total presure related enthalpy at current time step
+				bE(i_3d) -= ((dx * dy * dz_mean) * oildensity(i_3d) + dmdt * dt) * (cT * ploop(i_2d)) / dt;
+				// total enthalpy at previuos time step
+				bE(i_3d) += ((dx * dy * dz_mean) * oildensity(i_3d) + dmdt * dt) * (cp * T_old(i_3d) + cT * ploop_old(i_2d)) / dt;
+				// total temperture related enthalpy at current time step divided by current temperature
+				double sp = -1 * ( dx * dy * dz_mean * oildensity(i_3d) * cp / dt);
+				// Spatial coefficients at cell
+				apE(i_3d) = anE(i_3d) + asE(i_3d) + aeE(i_3d) + awE(i_3d) + atE(i_3d) + abE(i_3d) - sp + (F_e - F_w + F_n - F_s);
+			}
+		}
+	}
+	
+	//SOR Loop
+	Tnew = T;
+	alpha = 1.3;
+	int iterations = 0;
+	int iter_max = 10000;
+	double R = 1.0;
+	double Tn,Ts,Te,Tw,Tt,Tb;
+	do
+	{
+
+		int q=0;
+		//SOR
+		for(int i=0;i<N*M*Q;i++)
+		{
+			if(i%(N*M)==0)
+			{
+				q++;
+			}
+			//North
+			if(i%M==(M-1) && i>0)
+			{
+				Tn = TCase;
+			}
+			else
+			{
+				Tn = Tnew(i+1);
+			}
+			//South
+			if(i%M==0)
+			{
+				Ts = TDC;
+			}
+			else
+			{
+				Ts = Tnew(i-1);
+			}
+
+			//East
+			if(i>=q*(N-1)*M)
+			{
+				Te = Tnew(i-(N-1)*M);
+			}
+			else
+			{
+				Te = Tnew(i+M);
+			}
+			//West
+			if(i<M+(q-1)*N*M)
+			{
+				Tw = Tnew(i+(N-1)*M);
+			}
+			else
+			{
+				Tw = Tnew(i-M);
+			}
+
+			//Top
+			if(i>=N*M*(Q-1))
+			{
+				Tt = TK_surf_gap(i-N*M*(Q-1));
+			}
+			else
+			{
+				Tt = Tnew(i+N*M);
+			}
+			//Bottom
+			if(i<N*M)
+			{
+				Tb = TB_surf_gap(i);
+			}
+			else
+			{
+				Tb = Tnew(i-N*M);
+			}
+			//bE(i) += ((Pn - Ps)/dy/2 * vy(i) + (Pe - Pw)/dx/2 * vx(i)) * dx * dy * dz2(i);
+			//bE(i) += (ploop(i%(N*M)) - ploop_old(i%(N*M))) / dt * dx * dy * dz2(i);
+
+			//SOR
+			Tnew(i) += alpha * ( ( ( anE(i) * Tn + asE(i) * Ts + aeE(i) * Te + awE(i) * Tw + atE(i) * Tt + abE(i) * Tb + bE(i) ) / apE(i) ) - Tnew(i) );
+			//cout<<"bE("<<i<<") "<<bE(i)<<"   Tnew("<<i<<") "<<Tnew(i)<<"\n";
+		};
+
+		//Counter
+		iterations++;
+
+		//Residual GS
+		PistonEnergyCalcResidualGS(R);
+
+	}while(R > Rmin_E && iterations < iter_max);
+
+
+	//Log
+	if(iterations>=iter_max)
+	{
+		fout.open("./output/piston/matlab/PistonGapLoopLog.txt",ios::app);
+		fout << "Max Number of Iterations Reached in Energy Equation Loop" << "\n";
+		fout << "Shaft Angle: " << "\t" << operatingpistongap.phi_rad*180/PI << "\n";
+		fout << "Residual: " << "\t" << R << "\n";
+		fout << " " << "\n";
+		fout.close();
+		fout.clear();
+	};
+
+	//Assign temperature
+	T = Tnew;
+
+	// generate 2d temperature field Lizhi
+	T_2d = 0;
+	phiD_2d = 0;
+	for(int i=0;i<Q;i++)
+	{
+		T_2d(Range(0,N*M-1)) += T(Range(i*N*M,(i+1)*N*M-1));
+		phiD_2d(Range(0,N*M-1)) += phiD(Range(i*N*M,(i+1)*N*M-1));
+	};
+
+	
+	T_2d/=Q;
+	phiD_2d/=Q;
+};
+//Calculate Energy residual for GS SOR method
+void CPistonGap::PistonEnergyCalcResidualGS(double &R)
+{
+
+	double Tn,Ts,Te,Tw,Tt,Tb,TDC,TCase,phi;
+
+	phi = operatingpistongap.phi_rad * 180/PI;
+	if(phi < 180)
+	{
+		TDC = temperaturepistongap.THP;
+	}
+	else
+	{
+		TDC = temperaturepistongap.TLP;
+	}
+	TCase = temperaturepistongap.TCase;
+
+	//Calculate residual field
+	r_T = 0.0;
+	int q=0;
+	for(int i=0;i<N*M*Q;i++)
+	{
+		if(i%(N*M)==0)
+		{
+			q++;
+		}
+		//North
+		if(i%M==(M-1) && i>0)
+		{
+			Tn = TCase;
+		}
+		else
+		{
+			Tn = Tnew(i+1);
+		}
+		//South
+		if(i%M==0)
+		{
+			Ts = TDC;
+		}
+		else
+		{
+			Ts = Tnew(i-1);
+		}
+
+		//East
+		if(i>=q*(N-1)*M)
+		{
+			Te = Tnew(i-(N-1)*M);
+		}
+		else
+		{
+			Te = Tnew(i+M);
+		}
+		//West
+		if(i<M+(q-1)*N*M)
+		{
+			Tw = Tnew(i+(N-1)*M);
+		}
+		else
+		{
+			Tw = Tnew(i-M);
+		}
+
+		//Top
+		if(i>=N*M*(Q-1))
+		{
+			Tt = TK_surf_gap(i-N*M*(Q-1));
+		}
+		else
+		{
+			Tt = Tnew(i+N*M);
+		}
+		//Bottom
+		if(i<N*M)
+		{
+			Tb = TB_surf_gap(i);
+		}
+		else
+		{
+			Tb = Tnew(i-N*M);
+		}
+		//SOR
+		r_T(i) = bE(i) - ( apE(i) * Tnew(i) - anE(i) * Tn - asE(i) * Ts - aeE(i) * Te - awE(i) * Tw - atE(i) * Tt - abE(i) * Tb );
+	};
+
+	//Calculate scaled residual
+	R = 0.0;
+	double n = sum(r_T);
+	double d = sum(apE*Tnew);
+	//double n = sqrt(sum(pow(r_T,2.0)));
+	//double d = sqrt(sum(pow(bE,2.0)));
+	R = n/d;
+
+};
+
+
+void CPistonGap::Averagepressure(void)
+{	
+	double pDC;
+	pDC = operatingpistongap.pDC;
+	double pCase;
+	pCase = operatingpistongap.pCase;
+	double pn, ps, pw, pe;
+	for(int n=0;n<N;n++)
+	{
+		for(int m=0;m<M;m++)
+		{
+			int i_2d = M*n + m;
+			if(m == M-1)
+			{
+				pn = (pCase - pnew(i_2d)) * 2 + pnew(i_2d);
+			}
+			else
+			{
+				pn = pnew(i_2d+1);
+			}
+			if(m == 0)
+			{
+				ps = (pDC - pnew(i_2d)) * 2 + pnew(i_2d);;
+			}
+			else
+			{
+				ps = pnew(i_2d-1);
+			}
+			if(n == N-1)
+			{
+				pe = pnew(i_2d-(N-1)*M);
+			}
+			else
+			{
+				pe = pnew(i_2d+M);
+			}
+			if(n == 0)
+			{
+				pw = pnew(i_2d+(N-1)*M);
+			}
+			else
+			{
+				pw = pnew(i_2d-M);
+			}
+			p(i_2d) = pnew(i_2d);
+			p(i_2d) += (pn - pnew(i_2d)) / 8;
+			p(i_2d) += (ps - pnew(i_2d)) / 8;
+			p(i_2d) += (pe - pnew(i_2d)) / 8;
+			p(i_2d) += (pw - pnew(i_2d)) / 8;
+			if (p(i_2d) > 1.0e9)
+				p(i_2d) = 1.0e9;
+
+		}
+	}
+}
+
+
+void CPistonGap::Pistonenergydissipation(void)
+{
+	double vK = operatingpistongap.vK;				
+	double omega = operatingpistongap.omega;		
+	double speedK = operatingpistongap.speedK;
+	phiD = 0;
+	for(int q=0;q<Q;q++)
+	{
+		for(int n=0;n<N;n++)
+		{
+			for(int m=0;m<M;m++)
+			{
+				double dvz_e = 0;
+				double dvz_w = 0;
+				double dvz_n = 0;
+				double dvz_s = 0;
+				double dz_e = 0;
+				double dz_w = 0;
+				double dz_n = 0;
+				double dz_s = 0;
+				int i_3d = M*N*q + M*n + m;
+				if(m==0)//south bound
+				{
+					dz_s = dz2(i_3d);
+				}
+				else
+				{
+					dz_s = (dz2(i_3d) + dz2(i_3d-1)) / 2;
+				}
+				if(m==M-1)//north bound
+				{
+					dz_n = dz2(i_3d);
+				}
+				else
+				{
+					dz_n = (dz2(i_3d) + dz2(i_3d+1)) / 2;
+				}
+				if(n==0)
+				{
+					dz_w = (dz2(i_3d) + dz2(i_3d + (N-1)*M)) / 2;
+				}
+				else
+				{
+					dz_w = (dz2(i_3d) + dz2(i_3d - M)) / 2;
+				}
+				if(n==N-1)//east bound
+				{
+					dz_e = (dz2(i_3d) + dz2(i_3d - (N-1)*M)) / 2;
+				}
+				else
+				{
+					dz_e = (dz2(i_3d) + dz2(i_3d + M)) / 2;
+				}
+				if(q==0)
+				{
+					int i_3d_up = M*N*(q+1) + M*n + m;
+					dvz_s = (vy_edge(i_3d_up) - 0.0) / dz_s / 1.5;
+					dvz_w = (vx_edge(i_3d_up) - 0.0) / dz_w / 1.5;
+					if(m==M-1)//north bound
+					{
+						dvz_n = (vy_edge_case(i_3d_up) - 0.0) / dz_n / 1.5;
+					}
+					else
+					{
+						dvz_n = (vy_edge(i_3d_up + 1) - 0.0) / dz_n / 1.5;
+					}
+					if(n==N-1)//east bound
+					{
+						dvz_e = (vx_edge(i_3d_up - (N-1)*M) - 0.0) / dz_e / 1.5;
+					}
+					else
+					{
+						dvz_e = (vx_edge(i_3d_up + M) - 0.0) / dz_e / 1.5;
+					}
+				}
+				else if(q==Q-1)
+				{
+					int i_3d_down = M*N*(q-1) + M*n + m;
+					double vx_up = omega * rK * speedK;
+					double vy_up = vK;
+					dvz_s = (vy_up - vy_edge(i_3d_down)) / dz_s / 1.5;
+					dvz_w = (vx_up - vx_edge(i_3d_down)) / dz_w / 1.5;
+					if(m==M-1)//north bound
+					{
+						dvz_n = (vy_up - vy_edge_case(i_3d_down)) / dz_n / 1.5;
+					}
+					else
+					{
+						dvz_n = (vy_up - vy_edge(i_3d_down + 1)) / dz_n / 1.5;
+					}
+					if(n==N-1)//east bound
+					{
+						dvz_e = (vx_up - vx_edge(i_3d_down - (N-1)*M)) / dz_e / 1.5;
+					}
+					else
+					{
+						dvz_e = (vx_up - vx_edge(i_3d_down + M)) / dz_e / 1.5;
+					}
+					/*
+					if(m==0)//south bound
+					{
+						dvz_s = (vy_up - vy_edge(i_3d_down)) / dz2(i_3d) / 1.5;
+					}
+					else
+					{
+						dvz_s = (vy_up - vy_edge(i_3d_down)) / (dz2(i_3d) + dz2(i_3d-1))*2 / 1.5;
+					}
+					if(m==M-1)//north bound
+					{
+						dvz_n = (vy_up - vy_edge_case(i_3d_down)) / dz2(i_3d) / 1.5;
+					}
+					else
+					{
+						dvz_n = (vy_up - vy_edge(i_3d_down + 1)) / (dz2(i_3d) + dz2(i_3d+1))*2 / 1.5;
+					}
+					if(n==0)
+					{
+						dvz_w = (vx_up - vx_edge(i_3d_down)) / (dz2(i_3d) + dz2(i_3d + (N-1)*M))*2 / 1.5;
+					}
+					else
+					{
+						dvz_w = (vx_up - vx_edge(i_3d_down)) / (dz2(i_3d) + dz2(i_3d - M))*2 / 1.5;
+					}
+					if(n==N-1)//east bound
+					{
+						dvz_e = (vx_up - vx_edge(i_3d_down - (N-1)*M)) / (dz2(i_3d) + dz2(i_3d - (N-1)*M))*2 / 1.5;
+					}
+					else
+					{
+						dvz_e = (vx_up - vx_edge(i_3d_down + M)) / (dz2(i_3d) + dz2(i_3d + M))*2 / 1.5;
+					}*/
+				}
+				else
+				{
+					int i_3d_up = M*N*(q+1) + M*n + m;
+					int i_3d_down = M*N*(q-1) + M*n + m;
+					dvz_s = (vy_edge(i_3d_up) - vy_edge(i_3d_down)) / dz_s / 2;
+					dvz_w = (vx_edge(i_3d_up) - vx_edge(i_3d_down)) / dz_w / 2;
+					if(m==M-1)//north bound
+					{
+						dvz_n = (vy_edge_case(i_3d_up) - vy_edge_case(i_3d_down)) / dz_n / 2;
+					}
+					else
+					{
+						dvz_n = (vy_edge(i_3d_up + 1) - vy_edge(i_3d_down + 1)) / dz_n / 2;
+					}
+					if(n==N-1)//east bound
+					{
+						dvz_e = (vx_edge(i_3d_up - (N-1)*M) - vx_edge(i_3d_down - (N-1)*M)) / dz_e / 2;
+					}
+					else
+					{
+						dvz_e = (vx_edge(i_3d_up + M) - vx_edge(i_3d_down + M)) / dz_e / 2;
+					}
+					/*
+					if(m==0)//south bound
+					{
+						dvz_s = (vy_edge(i_3d_up) - vy_edge(i_3d_down)) / dz2(i_3d) / 2;
+					}
+					else
+					{
+						dvz_s = (vy_edge(i_3d_up) - vy_edge(i_3d_down)) / (dz2(i_3d) + dz2(i_3d-1))*2 / 2;
+					}
+					if(m==M-1)//north bound
+					{
+						dvz_n = (vy_edge_case(i_3d_up) - vy_edge_case(i_3d_down)) / dz2(i_3d) / 2;
+					}
+					else
+					{
+						dvz_n = (vy_edge(i_3d_up + 1) - vy_edge(i_3d_down + 1)) / (dz2(i_3d) + dz2(i_3d+1))*2 / 2;
+					}
+					if(n==0)
+					{
+						dvz_w = (vx_edge(i_3d_up) - vx_edge(i_3d_down)) / (dz2(i_3d) + dz2(i_3d + (N-1)*M))*2 / 2;
+					}
+					else
+					{
+						dvz_w = (vx_edge(i_3d_up) - vx_edge(i_3d_down)) / (dz2(i_3d) + dz2(i_3d - M))*2 / 2;
+					}
+					if(n==N-1)//east bound
+					{
+						dvz_e = (vx_edge(i_3d_up - (N-1)*M) - vx_edge(i_3d_down - (N-1)*M)) / (dz2(i_3d) + dz2(i_3d - (N-1)*M))*2 / 2;
+					}
+					else
+					{
+						dvz_e = (vx_edge(i_3d_up + M) - vx_edge(i_3d_down + M)) / (dz2(i_3d) + dz2(i_3d + M))*2 / 2;
+					}*/
+				}
+				phiD(i_3d) += (dvz_e - dvz_w) * (dvz_e - dvz_w) / 3 + (dvz_e - dvz_w) * dvz_w + dvz_w * dvz_w;
+				phiD(i_3d) += (dvz_n - dvz_s) * (dvz_n - dvz_s) / 3 + (dvz_n - dvz_s) * dvz_s + dvz_s * dvz_s;
+				phiD(i_3d) *= (dz_s + dz_n + dz_w + dz_e) / 4;
+			}
+		}
+	}
+
+	//cout<<"A--L--O--H--A--!!!!!!"<<endl;
+
+	//phiD = 0;
+	//phiD = (pow(dvxz,2.0) + pow(dvyz,2.0)) * dz2;
+}

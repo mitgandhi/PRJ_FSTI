@@ -1,0 +1,46 @@
+﻿Build started 7/14/2015 11:23:12 PM.
+     1>Project "C:\FSTI\Caspar\caspar_input\caspar_input.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\caspar_input.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\Rene Chacon\ThirdPartyLibraries\ANN" /I"C:\Rene Chacon\ThirdPartyLibraries" /I"C:\Rene Chacon\ThirdPartyLibraries\gsl-1.15" /I"C:\Rene Chacon\ThirdPartyLibraries\gsl-1.15\gsl" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt blockoptions.cpp geometry.cpp input.cpp inputfile.cpp logger.cpp lubricationmodule.cpp materials.cpp oil.cpp operatingconditions.cpp pistonoptions.cpp pmodule.cpp section.cpp slipperoptions.cpp thermalfile.cpp
+         thermalfile.cpp
+         slipperoptions.cpp
+         section.cpp
+     1>c:\fsti\caspar\caspar_input\section.cpp(80): warning C4018: '<' : signed/unsigned mismatch
+         pmodule.cpp
+         pistonoptions.cpp
+         operatingconditions.cpp
+         oil.cpp
+         materials.cpp
+         lubricationmodule.cpp
+         logger.cpp
+         inputfile.cpp
+         input.cpp
+         geometry.cpp
+         blockoptions.cpp
+         Generating Code...
+       Lib:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"C:\FSTI\Caspar\main\Debug\caspar_input.lib" /NOLOGO Debug\blockoptions.obj
+         Debug\geometry.obj
+         Debug\input.obj
+         Debug\inputfile.obj
+         Debug\logger.obj
+         Debug\lubricationmodule.obj
+         Debug\materials.obj
+         Debug\oil.obj
+         Debug\operatingconditions.obj
+         Debug\pistonoptions.obj
+         Debug\pmodule.obj
+         Debug\section.obj
+         Debug\slipperoptions.obj
+         Debug\thermalfile.obj
+         caspar_input.vcxproj -> C:\FSTI\Caspar\main\Debug\caspar_input.lib
+       FinalizeBuildStatus:
+         Deleting file "Debug\caspar_input.unsuccessfulbuild".
+         Touching "Debug\caspar_input.lastbuildstate".
+     1>Done Building Project "C:\FSTI\Caspar\caspar_input\caspar_input.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.85

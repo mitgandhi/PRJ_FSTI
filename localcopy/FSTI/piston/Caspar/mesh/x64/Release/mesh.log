@@ -1,0 +1,30 @@
+﻿Build started 6/13/2018 4:37:51 PM.
+     1>Project "I:\localCopy\FSTI\piston\Caspar\mesh\mesh.vcxproj" on node 3 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "x64\Release\mesh.lastbuildstate".
+       InitializeBuildStatus:
+         Creating "x64\Release\mesh.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Ot /GL /D WIN64 /D NDEBUG /D _CONSOLE /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /wd4800 /wd4805 /errorReport:prompt src\CMesh.cpp /MP 
+         CMesh.cpp
+     1>src\CMesh.cpp(83): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CMesh.cpp(84): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CMesh.cpp(85): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CMesh.cpp(86): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CMesh.cpp(87): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CMesh.cpp(90): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CMesh.cpp(91): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CMesh.cpp(92): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CMesh.cpp(93): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CMesh.cpp(94): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+       Lib:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\Lib.exe /OUT:"I:\localCopy\FSTI\piston\Caspar\main\x64\Release\mesh.lib" /NOLOGO /LTCG x64\Release\CMesh.obj
+         mesh.vcxproj -> I:\localCopy\FSTI\piston\Caspar\main\x64\Release\mesh.lib
+       FinalizeBuildStatus:
+         Deleting file "x64\Release\mesh.unsuccessfulbuild".
+         Touching "x64\Release\mesh.lastbuildstate".
+     1>Done Building Project "I:\localCopy\FSTI\piston\Caspar\mesh\mesh.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.09

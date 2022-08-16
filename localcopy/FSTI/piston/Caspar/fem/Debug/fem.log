@@ -1,0 +1,13 @@
+﻿Build started 7/14/2015 11:30:08 PM.
+     1>Project "C:\FSTI\Caspar\fem\fem.vcxproj" on node 3 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Debug\fem.unsuccessfulbuild".
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\Matteo\ThirdParty /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /wd4800 /wd4805 /analyze- /errorReport:prompt src\femSolver.cpp /D_SCL_SECURE_NO_DEPRECATE 
+         femSolver.cpp
+     1>c:\fsti\caspar\fem\src\femsolver.cpp(7): fatal error C1083: Cannot open include file: 'gmm/gmm_kernel.h': No such file or directory
+     1>Done Building Project "C:\FSTI\Caspar\fem\fem.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.30

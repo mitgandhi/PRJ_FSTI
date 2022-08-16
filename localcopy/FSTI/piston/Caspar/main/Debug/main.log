@@ -1,0 +1,36 @@
+﻿Build started 7/14/2015 11:30:09 PM.
+     1>Project "C:\FSTI\Caspar\main\main.vcxproj" on node 3 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Debug\piston.unsuccessfulbuild".
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\Matteo\Caspar\fem\src /IC:\Matteo\Caspar\thermal\src /IC:\Matteo\Caspar\mesh\src /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /wd4800 /wd4805 /analyze- /errorReport:prompt src\CGapInput.cpp src\CGapODE.cpp src\CGapUtils.cpp src\CNewtonIteration.cpp src\CPistonGap.cpp src\CPistonGapFEM.cpp src\CPistonGapGS.cpp src\CPistonGapMG.cpp src\CPistonGapThermal.cpp src\CPistonGapdF.cpp src\CPressure.cpp src\main.cpp
+         main.cpp
+     1>c:\fsti\caspar\main\src\cgapinput.h(22): fatal error C1083: Cannot open include file: 'blitz\array.h': No such file or directory
+         CPressure.cpp
+     1>c:\fsti\caspar\main\src\cgapinput.h(22): fatal error C1083: Cannot open include file: 'blitz\array.h': No such file or directory
+         CPistonGapdF.cpp
+     1>c:\fsti\caspar\main\src\cgapinput.h(22): fatal error C1083: Cannot open include file: 'blitz\array.h': No such file or directory
+         CPistonGapThermal.cpp
+     1>c:\fsti\caspar\main\src\cgapinput.h(22): fatal error C1083: Cannot open include file: 'blitz\array.h': No such file or directory
+         CPistonGapMG.cpp
+     1>c:\fsti\caspar\main\src\cgapinput.h(22): fatal error C1083: Cannot open include file: 'blitz\array.h': No such file or directory
+         CPistonGapGS.cpp
+     1>c:\fsti\caspar\main\src\cgapinput.h(22): fatal error C1083: Cannot open include file: 'blitz\array.h': No such file or directory
+         CPistonGapFEM.cpp
+     1>c:\fsti\caspar\main\src\cgapinput.h(22): fatal error C1083: Cannot open include file: 'blitz\array.h': No such file or directory
+         CPistonGap.cpp
+     1>c:\fsti\caspar\main\src\cgapinput.h(22): fatal error C1083: Cannot open include file: 'blitz\array.h': No such file or directory
+         CNewtonIteration.cpp
+     1>c:\fsti\caspar\main\src\cgapinput.h(22): fatal error C1083: Cannot open include file: 'blitz\array.h': No such file or directory
+         CGapUtils.cpp
+     1>c:\fsti\caspar\main\src\cgapinput.h(22): fatal error C1083: Cannot open include file: 'blitz\array.h': No such file or directory
+         CGapODE.cpp
+     1>c:\fsti\caspar\main\src\cgapinput.h(22): fatal error C1083: Cannot open include file: 'blitz\array.h': No such file or directory
+         CGapInput.cpp
+     1>c:\fsti\caspar\main\src\cgapinput.h(22): fatal error C1083: Cannot open include file: 'blitz\array.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "C:\FSTI\Caspar\main\main.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:06.48

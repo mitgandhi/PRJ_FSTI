@@ -1,0 +1,170 @@
+﻿Build started 6/13/2018 4:38:10 PM.
+     1>Project "I:\localCopy\FSTI\piston\Caspar\main\main.vcxproj" on node 5 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "x64\Release\piston.lastbuildstate".
+       InitializeBuildStatus:
+         Touching "x64\Release\piston.unsuccessfulbuild".
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /II:\localCopy\FSTI\piston\Caspar\main\..\fem\src /II:\localCopy\FSTI\piston\Caspar\main\..\thermal\src /II:\localCopy\FSTI\piston\Caspar\main\..\mesh\src /Zi /nologo /W3 /WX- /O2 /Oi /Ot /GL /D WIN64 /D NDEBUG /D _CONSOLE /D _WINDLL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /openmp /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /wd4800 /wd4805 /errorReport:prompt src\CGapInput.cpp src\CGapODE.cpp src\CGapUtils.cpp src\CNewtonIteration.cpp src\CPistonGap.cpp src\CPistonGapdF.cpp src\CPistonGapFEM.cpp src\CPistonGapGS.cpp src\CPistonGapHD.cpp src\CPistonGapMG.cpp src\CPistonGapThermal.cpp src\CPressure.cpp src\logger.cpp src\main.cpp src\oil.cpp /MP /D_SCL_SECURE_NO_DEPRECATE 
+         CGapInput.cpp
+         CGapODE.cpp
+         CGapUtils.cpp
+         CNewtonIteration.cpp
+         CPistonGap.cpp
+         CPistonGapdF.cpp
+         CPistonGapFEM.cpp
+         CPistonGapGS.cpp
+     1>src\CGapInput.cpp(803): warning C4244: '=' : conversion from 'double' to 'unsigned short', possible loss of data
+     1>src\CGapInput.cpp(811): warning C4244: '=' : conversion from 'double' to 'unsigned short', possible loss of data
+     1>src\CGapInput.cpp(907): warning C4244: '=' : conversion from 'double' to 'unsigned short', possible loss of data
+     1>src\CGapInput.cpp(915): warning C4244: '=' : conversion from 'double' to 'unsigned short', possible loss of data
+     1>src\CGapInput.cpp(1432): warning C4018: '<=' : signed/unsigned mismatch
+     1>src\CGapInput.cpp(1434): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(867) : see declaration of 'itoa'
+     1>src\CGapInput.cpp(1466): warning C4018: '<=' : signed/unsigned mismatch
+     1>src\CGapInput.cpp(1468): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(867) : see declaration of 'itoa'
+     1>src\CGapInput.cpp(1505): warning C4018: '<' : signed/unsigned mismatch
+     1>src\CGapInput.cpp(1547): warning C4018: '<=' : signed/unsigned mismatch
+     1>src\CGapInput.cpp(1551): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(867) : see declaration of 'itoa'
+     1>src\CGapInput.cpp(1594): warning C4018: '<=' : signed/unsigned mismatch
+     1>src\CGapInput.cpp(1598): warning C4996: 'itoa': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _itoa. See online help for details.
+                 c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdlib.h(867) : see declaration of 'itoa'
+     1>src\CPistonGapFEM.cpp(118): warning C4244: '=' : conversion from 'ULONGLONG' to 'int', possible loss of data
+     1>src\CPistonGapFEM.cpp(18): warning C4101: 'lvar' : unreferenced local variable
+     1>src\CPistonGapFEM.cpp(99): warning C4101: 'flag' : unreferenced local variable
+     1>src\CPistonGapFEM.cpp(365): warning C4018: '<' : signed/unsigned mismatch
+     1>src\CPistonGapFEM.cpp(380): warning C4018: '<' : signed/unsigned mismatch
+     1>src\CPistonGapdF.cpp(52): warning C4101: 'contact' : unreferenced local variable
+     1>src\CPistonGapdF.cpp(50): warning C4101: 'scale' : unreferenced local variable
+     1>src\CPistonGapdF.cpp(50): warning C4101: 'sigmalimit' : unreferenced local variable
+     1>src\CPistonGap.cpp(1071): warning C4101: 'dt_2' : unreferenced local variable
+     1>src\CPistonGap.cpp(1071): warning C4101: 'M2' : unreferenced local variable
+     1>src\CPistonGap.cpp(1072): warning C4101: 'st' : unreferenced local variable
+     1>src\CPistonGap.cpp(1071): warning C4101: 'b' : unreferenced local variable
+     1>src\CPistonGap.cpp(1071): warning C4101: 'M1' : unreferenced local variable
+     1>src\CPistonGap.cpp(1071): warning C4101: 'skt' : unreferenced local variable
+     1>src\CGapODE.cpp(297): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>src\CGapODE.cpp(325): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>src\CPistonGapdF.cpp(244): warning C4267: 'initializing' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CPistonGapdF.cpp(267): warning C4267: 'initializing' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CGapODE.cpp(1001): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+         CPistonGapHD.cpp
+         CPistonGapMG.cpp
+     1>src\CPistonGap.cpp(2393): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>src\CPistonGap.cpp(2395): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>src\CPistonGap.cpp(2397): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>src\CPistonGap.cpp(2399): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>src\CPistonGap.cpp(2561): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>src\CPistonGap.cpp(2563): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>src\CPistonGap.cpp(2565): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>src\CPistonGap.cpp(2567): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+         CPistonGapThermal.cpp
+     1>src\CPistonGap.cpp(3430): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CPistonGap.cpp(3474): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>src\CPistonGap.cpp(3561): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CPistonGap.cpp(3594): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+         CPressure.cpp
+     1>src\CPistonGapHD.cpp(142): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CPistonGapHD.cpp(243): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CPistonGapHD.cpp(335): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CPistonGapHD.cpp(384): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CPistonGapHD.cpp(429): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CPistonGapHD.cpp(491): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CPistonGapHD.cpp(561): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CPistonGapHD.cpp(608): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CPistonGapHD.cpp(656): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CPistonGapHD.cpp(677): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CPistonGapHD.cpp(727): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CPistonGapHD.cpp(748): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CPistonGapHD.cpp(797): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CPistonGapHD.cpp(818): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>src\CPistonGapHD.cpp(18): warning C4101: 'coeff' : unreferenced local variable
+     1>src\CPistonGapHD.cpp(16): warning C4101: 'counter' : unreferenced local variable
+     1>src\CPistonGapHD.cpp(18): warning C4101: 'cutoffpress' : unreferenced local variable
+     1>src\CPistonGapHD.cpp(18): warning C4101: 'cutoffheight' : unreferenced local variable
+     1>src\CPistonGapHD.cpp(1073): warning C4267: 'initializing' : conversion from 'size_t' to 'int', possible loss of data
+         logger.cpp
+         main.cpp
+     1>src\CPistonGapThermal.cpp(209): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>src\CPistonGapThermal.cpp(209): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>src\CPistonGapThermal.cpp(210): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>src\CPistonGapThermal.cpp(210): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>src\CPistonGapThermal.cpp(425): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>src\CPistonGapThermal.cpp(566): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+         oil.cpp
+     1>src\oil.cpp(60): warning C4244: '=' : conversion from 'const double' to 'int', possible loss of data
+     1>src\main.cpp(75): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>src\main.cpp(77): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>src\main.cpp(364): warning C4244: 'argument' : conversion from 'double' to 'gmm::csc_matrix<T,shift>::IND_TYPE', possible loss of data
+     1>src\main.cpp(369): warning C4244: 'argument' : conversion from 'double' to 'gmm::csc_matrix<T,shift>::IND_TYPE', possible loss of data
+     1>src\main.cpp(371): warning C4267: '=' : conversion from 'size_t' to 'unsigned int', possible loss of data
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"I:\localCopy\FSTI\piston\Caspar\main\x64\Release\fsti_piston.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:./src blitz.lib ann.lib fsti_netlic_client.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:libc.lib /NODEFAULTLIB:libcmt.lib /NODEFAULTLIB:libcd.lib /NODEFAULTLIB:libcmtd.lib /NODEFAULTLIB:msvcrtd.lib /MANIFEST /ManifestFile:"x64\Release\fsti_piston.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"I:\localCopy\FSTI\piston\Caspar\main\x64\Release\fsti_piston.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"I:\localCopy\FSTI\piston\Caspar\main\x64\Release\fsti_piston.lib" /MACHINE:X64 /DLL x64\Release\CGapInput.obj
+         x64\Release\CGapODE.obj
+         x64\Release\CGapUtils.obj
+         x64\Release\CNewtonIteration.obj
+         x64\Release\CPistonGap.obj
+         x64\Release\CPistonGapdF.obj
+         x64\Release\CPistonGapFEM.obj
+         x64\Release\CPistonGapGS.obj
+         x64\Release\CPistonGapHD.obj
+         x64\Release\CPistonGapMG.obj
+         x64\Release\CPistonGapThermal.obj
+         x64\Release\CPressure.obj
+         x64\Release\logger.obj
+         x64\Release\main.obj
+         x64\Release\oil.obj
+         I:\localCopy\FSTI\piston\Caspar\main\x64\Release\caspar_input.lib
+         I:\localCopy\FSTI\piston\Caspar\main\x64\Release\fem.lib
+         I:\localCopy\FSTI\piston\Caspar\main\x64\Release\mesh.lib
+         I:\localCopy\FSTI\piston\Caspar\main\x64\Release\thermal.lib
+            Creating library I:\localCopy\FSTI\piston\Caspar\main\x64\Release\fsti_piston.lib and object I:\localCopy\FSTI\piston\Caspar\main\x64\Release\fsti_piston.exp
+         Generating code
+         Finished generating code
+     1>CGapUtils.obj : warning LNK4049: locally defined symbol ?annAllocPt@@YAPEANHN@Z (double * __cdecl annAllocPt(int,double)) imported
+     1>CGapUtils.obj : warning LNK4049: locally defined symbol ?annAllocPts@@YAPEAPEANHH@Z (double * * __cdecl annAllocPts(int,int)) imported
+     1>CGapUtils.obj : warning LNK4049: locally defined symbol ?annDeallocPt@@YAXAEAPEAN@Z (void __cdecl annDeallocPt(double * &)) imported
+     1>CGapUtils.obj : warning LNK4049: locally defined symbol ?annDeallocPts@@YAXAEAPEAPEAN@Z (void __cdecl annDeallocPts(double * * &)) imported
+     1>CGapUtils.obj : warning LNK4049: locally defined symbol ??0ANNkd_tree@@QEAA@PEAPEANHHHW4ANNsplitRule@@@Z (public: __cdecl ANNkd_tree::ANNkd_tree(double * *,int,int,int,enum ANNsplitRule)) imported
+     1>CGapUtils.obj : warning LNK4049: locally defined symbol ?annkSearch@ANNkd_tree@@UEAAXPEANHPEAH0N@Z (public: virtual void __cdecl ANNkd_tree::annkSearch(double *,int,int *,double *,double)) imported
+     1>CGapUtils.obj : warning LNK4049: locally defined symbol ?annkFRSearch@ANNkd_tree@@UEAAHPEANNHPEAH0N@Z (public: virtual int __cdecl ANNkd_tree::annkFRSearch(double *,double,int,int *,double *,double)) imported
+     1>CGapUtils.obj : warning LNK4049: locally defined symbol ?theDim@ANNkd_tree@@UEAAHXZ (public: virtual int __cdecl ANNkd_tree::theDim(void)) imported
+     1>CGapUtils.obj : warning LNK4049: locally defined symbol ?nPoints@ANNkd_tree@@UEAAHXZ (public: virtual int __cdecl ANNkd_tree::nPoints(void)) imported
+     1>CGapUtils.obj : warning LNK4049: locally defined symbol ?thePoints@ANNkd_tree@@UEAAPEAPEANXZ (public: virtual double * * __cdecl ANNkd_tree::thePoints(void)) imported
+     1>CGapUtils.obj : warning LNK4049: locally defined symbol ?Print@ANNkd_tree@@UEAAXW4ANNbool@@AEAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z (public: virtual void __cdecl ANNkd_tree::Print(enum ANNbool,class std::basic_ostream<char,struct std::char_traits<char> > &)) imported
+     1>CGapUtils.obj : warning LNK4049: locally defined symbol ?Dump@ANNkd_tree@@UEAAXW4ANNbool@@AEAV?$basic_ostream@DU?$char_traits@D@std@@@std@@@Z (public: virtual void __cdecl ANNkd_tree::Dump(enum ANNbool,class std::basic_ostream<char,struct std::char_traits<char> > &)) imported
+     1>CGapUtils.obj : warning LNK4049: locally defined symbol ?getStats@ANNkd_tree@@UEAAXAEAVANNkdStats@@@Z (public: virtual void __cdecl ANNkd_tree::getStats(class ANNkdStats &)) imported
+     1>CGapUtils.obj : warning LNK4049: locally defined symbol ??1ANNkd_tree@@UEAA@XZ (public: virtual __cdecl ANNkd_tree::~ANNkd_tree(void)) imported
+     1>CGapUtils.obj : warning LNK4049: locally defined symbol ?annClose@@YAXXZ (void __cdecl annClose(void)) imported
+     1>ann.lib(ANN.obj) : warning LNK4204: 'I:\localCopy\FSTI\piston\Caspar\main\x64\Release\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ann.lib(bd_fix_rad_search.obj) : warning LNK4204: 'I:\localCopy\FSTI\piston\Caspar\main\x64\Release\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ann.lib(bd_pr_search.obj) : warning LNK4204: 'I:\localCopy\FSTI\piston\Caspar\main\x64\Release\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ann.lib(bd_search.obj) : warning LNK4204: 'I:\localCopy\FSTI\piston\Caspar\main\x64\Release\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ann.lib(bd_tree.obj) : warning LNK4204: 'I:\localCopy\FSTI\piston\Caspar\main\x64\Release\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ann.lib(brute.obj) : warning LNK4204: 'I:\localCopy\FSTI\piston\Caspar\main\x64\Release\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ann.lib(kd_dump.obj) : warning LNK4204: 'I:\localCopy\FSTI\piston\Caspar\main\x64\Release\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ann.lib(kd_fix_rad_search.obj) : warning LNK4204: 'I:\localCopy\FSTI\piston\Caspar\main\x64\Release\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ann.lib(kd_pr_search.obj) : warning LNK4204: 'I:\localCopy\FSTI\piston\Caspar\main\x64\Release\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ann.lib(kd_search.obj) : warning LNK4204: 'I:\localCopy\FSTI\piston\Caspar\main\x64\Release\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ann.lib(kd_split.obj) : warning LNK4204: 'I:\localCopy\FSTI\piston\Caspar\main\x64\Release\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ann.lib(kd_tree.obj) : warning LNK4204: 'I:\localCopy\FSTI\piston\Caspar\main\x64\Release\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ann.lib(kd_util.obj) : warning LNK4204: 'I:\localCopy\FSTI\piston\Caspar\main\x64\Release\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>ann.lib(perf.obj) : warning LNK4204: 'I:\localCopy\FSTI\piston\Caspar\main\x64\Release\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>fsti_netlic_client.lib(fsti_netlic_client.obj) : warning LNK4204: 'I:\localCopy\FSTI\piston\Caspar\main\x64\Release\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+     1>fsti_netlic_client.lib(network_session.obj) : warning LNK4204: 'I:\localCopy\FSTI\piston\Caspar\main\x64\Release\vc100.pdb' is missing debugging information for referencing module; linking object as if no debug info
+         main.vcxproj -> I:\localCopy\FSTI\piston\Caspar\main\x64\Release\fsti_piston.dll
+       Manifest:
+         c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"I:\localCopy\FSTI\piston\Caspar\main\x64\Release\fsti_piston.dll;#2" /manifest x64\Release\fsti_piston.dll.intermediate.manifest
+       PostBuildEvent:
+         del x64\Release\main.obj
+         :VCEnd
+       FinalizeBuildStatus:
+         Deleting file "x64\Release\piston.unsuccessfulbuild".
+         Touching "x64\Release\piston.lastbuildstate".
+     1>Done Building Project "I:\localCopy\FSTI\piston\Caspar\main\main.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:49.37

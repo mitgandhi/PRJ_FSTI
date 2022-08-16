@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+ <connectionOption>localhost</connectionOption>
+ <rdmgr>
+  <timestamp type="u64_t">1498100174</timestamp>
+  <hostname>kpnrabe27</hostname>
+  <os>windows</os>
+  <product>Intel® VTune™ Amplifier XE 2015 Update 4</product>
+  <buildNumber type="s32_t">410668</buildNumber>
+  <logicalCPUCount type="s32_t">8</logicalCPUCount>
+  <CPUFrequency type="s64_t">3600000000</CPUFrequency>
+ </rdmgr>
+ <All_Configurations-All_Platforms>
+  <analysis_type_settings>
+   <selected_analysis_type_path>C:\Program Files (x86)\Intel\VTune Amplifier XE 2015\config\analysis_type\advanced_hotspots.cfg</selected_analysis_type_path>
+  </analysis_type_settings>
+ </All_Configurations-All_Platforms>
+ <contextValues>
+  <contextValue>
+   <id>emulatorByCtxKnob</id>
+   <value></value>
+  </contextValue>
+ </contextValues>
+</root>

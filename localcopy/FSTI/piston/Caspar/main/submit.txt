@@ -1,0 +1,18 @@
+Universe   = Vanilla
+Executable = runcondor.cmd
+transfer_input_files = input$(Process).zip,7za.exe,Research.zip
+requirements = ( Arch == "X86_64" && (OpSys=="WINNT61" || OpSys=="WINDOWS"))
+should_transfer_files = yes
+when_to_transfer_output = ON_EXIT
+notification = NEVER
+Arguments  = $(Process)
+Log        = S90-75.log
+Output     = S90-75-output.$(Process).out
+Error      = S90-75-error.$(Process).err
+stream_output = true
+stream_error = true
+#CPUs
+request_cpus = 1
+#Memory in MB
+request_memory = 2000
+Queue 16
