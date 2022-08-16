@@ -1,0 +1,24 @@
+﻿Build started 6/11/18 5:20:45 PM.
+     1>Project "H:\localCopy\caspar_slipper\caspar_slipper_exe\caspar_slipper_exe.vcxproj" on node 2 (rebuild target(s)).
+     1>InitializeBuildStatus:
+         Touching "x64\Release\caspar_slipper_exe.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Rene Chacon\ThirdPartyLibraries" /I"C:\Rene Chacon\ThirdPartyLibraries\blitz-0.9\64bit" /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries\ANN /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries /I"C:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gsl-1.15" /I"C:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gsl-1.15\gsl" /I"C:\localCopy\06_Third_party_libraries\blitz-0.9\64bit" /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /errorReport:prompt src\main.cpp
+         main.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"H:\localCopy\caspar_slipper\x64\Release\fsti_slipper.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Rene Chacon\ThirdPartyLibraries\blitz-0.9\64bit\Blitz-VS.NET\lib" /LIBPATH:"C:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gsl-1.15\x64" /LIBPATH:C:\localCopy\FSTI_block_2.0\06_Third_party_libraries\ANN\lib64 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"x64\Release\fsti_slipper.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"H:\localCopy\caspar_slipper\x64\Release\fsti_slipper.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"H:\localCopy\caspar_slipper\x64\Release\fsti_slipper.lib" /MACHINE:X64 x64\Release\main.obj
+         H:\localCopy\caspar_slipper\x64\Release\caspar_input.lib
+         H:\localCopy\caspar_slipper\x64\Release\fsti_slipper.lib
+         Generating code
+         Finished generating code
+         caspar_slipper_exe.vcxproj -> H:\localCopy\caspar_slipper\x64\Release\fsti_slipper.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"H:\localCopy\caspar_slipper\x64\Release\fsti_slipper.exe;#1" /manifest x64\Release\fsti_slipper.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "x64\Release\caspar_slipper_exe.unsuccessfulbuild".
+         Touching "x64\Release\caspar_slipper_exe.lastbuildstate".
+     1>Done Building Project "H:\localCopy\caspar_slipper\caspar_slipper_exe\caspar_slipper_exe.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.68

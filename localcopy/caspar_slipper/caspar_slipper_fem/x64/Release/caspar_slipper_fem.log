@@ -1,0 +1,30 @@
+﻿Build started 6/11/18 5:19:15 PM.
+     1>Project "H:\localCopy\caspar_slipper\caspar_slipper_fem\caspar_slipper_fem.vcxproj" on node 2 (rebuild target(s)).
+     1>InitializeBuildStatus:
+         Creating "x64\Release\caspar_slipper_fem.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Rene Chacon\ThirdPartyLibraries" /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries\ANN /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries /I"C:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gsl-1.15" /I"C:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gsl-1.15\gsl" /I"C:\localCopy\06_Third_party_libraries\blitz-0.9\64bit" /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /errorReport:prompt src\CasparSlipperFEM.cpp src\femAnalysis.cpp src\femBC.cpp src\femIO.cpp src\femSolve.cpp src\femUtility.cpp src\tetra_element.cpp /MP /D_SCL_SECURE_NO_DEPRECATE /D _SECURE_SCL=0 
+         CasparSlipperFEM.cpp
+         femAnalysis.cpp
+         femBC.cpp
+         femIO.cpp
+         femSolve.cpp
+         femUtility.cpp
+         tetra_element.cpp
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\Lib.exe /OUT:"H:\localCopy\caspar_slipper\x64\Release\caspar_slipper_fem.lib" /NOLOGO /LTCG x64\Release\CasparSlipperFEM.obj
+         x64\Release\femAnalysis.obj
+         x64\Release\femBC.obj
+         x64\Release\femIO.obj
+         x64\Release\femSolve.obj
+         x64\Release\femUtility.obj
+         x64\Release\tetra_element.obj
+         caspar_slipper_fem.vcxproj -> H:\localCopy\caspar_slipper\x64\Release\caspar_slipper_fem.lib
+       FinalizeBuildStatus:
+         Deleting file "x64\Release\caspar_slipper_fem.unsuccessfulbuild".
+         Touching "x64\Release\caspar_slipper_fem.lastbuildstate".
+     1>Done Building Project "H:\localCopy\caspar_slipper\caspar_slipper_fem\caspar_slipper_fem.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:07.93

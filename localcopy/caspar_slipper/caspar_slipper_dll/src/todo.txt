@@ -1,0 +1,22 @@
+TODO :: Need to test the resume file for the thermal slipper / thermal swashplate changes
+TODO :: Consider a pressure buildup in the pocket for laminar throttles
+TODO :: Consider trans. swashplate sqz effect (due to control system)
+TODO :: Enable the calling of start / end of revolution methods in Slipper
+TODO :: When start/end of rev methods in slipper work, move thermal func calls there (need to watch overall initgap() order tho)
+TODO :: Fix the vtk delete code to delete *.0.vtk
+TODO :: Enable all of the slipper orifice / throttle options correctly (i think just comment / disable the auto switcher)
+TODO :: Verify Gx/Gy with cross angle
+TODO :: Change how QSG is calculated (now through the orifice)
+TODO :: Rewrite getFTK to use the start / end revolution method instead of the logic it used
+TODO :: Move fluid coord sys correction when speedk = 1 from ode code to slipper code
+
+WARNING :: Fix torque loss (Nm) to use the effective distance from slipper center to shaft center dependent on (beta & gamma) instead of just rB
+
+WARNING :: Fluid temperatures still limited in calculation of Mu / Rho for the Skydrol oil model
+WARNING :: Implementation of newt_ehdsqzapprox would be wrong if a radial groove rested at 180deg of slipper theta
+
+INFO :: SockFixed should go in the resume file if it is used in production again.
+
+INFO ::	Currently the psocket has been changed to a fixed value set during calculation of FSK.
+INFO ::	Currently using 'upwinded' values for the cell2face gradient at fluid boundries
+INFO :: Currently set FullLoop to use full V instead of half V

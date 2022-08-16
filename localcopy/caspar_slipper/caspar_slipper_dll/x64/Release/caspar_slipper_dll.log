@@ -1,0 +1,201 @@
+﻿Build started 6/11/18 5:19:29 PM.
+     1>Project "H:\localCopy\caspar_slipper\caspar_slipper_dll\caspar_slipper_dll.vcxproj" on node 3 (rebuild target(s)).
+     1>InitializeBuildStatus:
+         Touching "x64\Release\caspar_slipper_dll.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /I"C:\localCopy\06_Third_party_libraries\gsl-1.15" /IC:\localCopy\06_Third_party_libraries /IC:\localCopy\06_Third_party_libraries\ANN /I"C:\localCopy\06_Third_party_libraries\blitz-0.9\64bit\Blitz-VS.NET" /I"C:\localCopy\06_Third_party_libraries\blitz-0.9\64bit" /I"C:\localCopy\06_Third_party_libraries\gsl-1.15\gsl" /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries\ANN /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries /I"C:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gsl-1.15" /I"C:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gsl-1.15\gsl" /I"C:\localCopy\06_Third_party_libraries\blitz-0.9\64bit" /Zi /nologo /W3 /WX- /O2 /Oi /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D CASPAR_SLIPPER_DLL_EXPORTS /D _CRT_SECURE_NO_WARNINGS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /openmp /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /wd4800 /wd4805 /wd4503 /wd4723 /errorReport:prompt src\CGapLog.cpp src\CGapODE.cpp src\CGapResult.cpp src\CNewtonIteration.cpp src\CSlipperGap.cpp src\CSlipperGap_Contact.cpp src\CSlipperGap_Debug.cpp src\CSlipperGap_EHD.cpp src\CSlipperGap_Energy.cpp src\CSlipperGap_Fluid.cpp src\CSlipperGap_Reynolds.cpp src\CSlipperGap_Thermal.cpp src\CSlipperGap_vtk.cpp src\main.cpp src\oil.cpp src\QuadProg++.cpp /MP /D_SCL_SECURE_NO_DEPRECATE  /D _SECURE_SCL=0 
+         CGapLog.cpp
+         CGapODE.cpp
+         CGapResult.cpp
+         CNewtonIteration.cpp
+         CSlipperGap.cpp
+     1>h:\localcopy\caspar_slipper\caspar_slipper_dll\src\cgaplog.h(35): warning C4722: 'CGapLog::error::~error' : destructor never returns, potential memory leak
+         CSlipperGap_Contact.cpp
+         CSlipperGap_Debug.cpp
+         CSlipperGap_EHD.cpp
+     1>h:\localcopy\caspar_slipper\caspar_slipper_dll\src\cgaplog.h(35): warning C4722: 'CGapLog::error::~error' : destructor never returns, potential memory leak
+         CSlipperGap_Energy.cpp
+         CSlipperGap_Fluid.cpp
+         CSlipperGap_Reynolds.cpp
+     1>src\CSlipperGap_Fluid.cpp(447): warning C4101: 'pG_conv' : unreferenced local variable
+         CSlipperGap_Thermal.cpp
+         CSlipperGap_vtk.cpp
+         main.cpp
+         oil.cpp
+         QuadProg++.cpp
+     1>src\oil.cpp(59): warning C4244: '=' : conversion from 'const double' to 'int', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"H:\localCopy\caspar_slipper\x64\Release\fsti_slipper.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\localCopy\06_Third_party_libraries\ANN\lib64 /LIBPATH:"C:\localCopy\06_Third_party_libraries\gsl-1.15\x64" /LIBPATH:"C:\localCopy\06_Third_party_libraries\blitz-0.9\64bit\Blitz-VS.NET\lib" /LIBPATH:C:\localCopy\06_Third_party_libraries\FSTI_Authorization\x64 /LIBPATH:"C:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gsl-1.15\x64" /LIBPATH:C:\localCopy\FSTI_block_2.0\06_Third_party_libraries\ANN\lib64 fsti_netlic_client.lib blitz.lib ann.lib cblas.lib gsl.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:libc.lib /NODEFAULTLIB:libcmt.lib /NODEFAULTLIB:libcd.lib /NODEFAULTLIB:libcmtd.lib /NODEFAULTLIB:msvcrtd.lib /MANIFEST /ManifestFile:"x64\Release\fsti_slipper.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"H:\localCopy\caspar_slipper\x64\Release\fsti_slipper_dll.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"H:\localCopy\caspar_slipper\x64\Release\fsti_slipper.lib" /MACHINE:X64 /DLL x64\Release\CGapLog.obj
+         x64\Release\CGapODE.obj
+         x64\Release\CGapResult.obj
+         x64\Release\CNewtonIteration.obj
+         x64\Release\CSlipperGap.obj
+         x64\Release\CSlipperGap_Contact.obj
+         x64\Release\CSlipperGap_Debug.obj
+         x64\Release\CSlipperGap_EHD.obj
+         x64\Release\CSlipperGap_Energy.obj
+         x64\Release\CSlipperGap_Fluid.obj
+         x64\Release\CSlipperGap_Reynolds.obj
+         x64\Release\CSlipperGap_Thermal.obj
+         x64\Release\CSlipperGap_vtk.obj
+         x64\Release\main.obj
+         x64\Release\oil.obj
+         x64\Release\QuadProg++.obj
+         H:\localCopy\caspar_slipper\x64\Release\caspar_input.lib
+         H:\localCopy\caspar_slipper\x64\Release\caspar_slipper_fem.lib
+            Creating library H:\localCopy\caspar_slipper\x64\Release\fsti_slipper.lib and object H:\localCopy\caspar_slipper\x64\Release\fsti_slipper.exp
+         Generating code
+         Finished generating code
+     1>ann.lib(kd_tree.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'ann.lib(kd_tree.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\vc100.pdb'; linking object as if no debug info
+     1>ann.lib(ANN.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'ann.lib(ANN.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\vc100.pdb'; linking object as if no debug info
+     1>ann.lib(kd_split.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'ann.lib(kd_split.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\vc100.pdb'; linking object as if no debug info
+     1>ann.lib(kd_fix_rad_search.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'ann.lib(kd_fix_rad_search.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\vc100.pdb'; linking object as if no debug info
+     1>ann.lib(kd_pr_search.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'ann.lib(kd_pr_search.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\vc100.pdb'; linking object as if no debug info
+     1>ann.lib(kd_search.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'ann.lib(kd_search.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\vc100.pdb'; linking object as if no debug info
+     1>ann.lib(kd_dump.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'ann.lib(kd_dump.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\vc100.pdb'; linking object as if no debug info
+     1>ann.lib(kd_util.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'ann.lib(kd_util.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\vc100.pdb'; linking object as if no debug info
+     1>ann.lib(bd_fix_rad_search.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'ann.lib(bd_fix_rad_search.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\vc100.pdb'; linking object as if no debug info
+     1>ann.lib(bd_pr_search.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'ann.lib(bd_pr_search.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\vc100.pdb'; linking object as if no debug info
+     1>ann.lib(bd_search.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'ann.lib(bd_search.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\vc100.pdb'; linking object as if no debug info
+     1>ann.lib(bd_tree.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'ann.lib(bd_tree.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\vc100.pdb'; linking object as if no debug info
+     1>fsti_netlic_client.lib(fsti_netlic_client.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'fsti_netlic_client.lib(fsti_netlic_client.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\vc100.pdb'; linking object as if no debug info
+     1>fsti_netlic_client.lib(network_session.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'fsti_netlic_client.lib(network_session.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\vc100.pdb'; linking object as if no debug info
+     1>cblas.lib(caxpy.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(caxpy.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(ccopy.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(ccopy.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(cdotc_sub.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(cdotc_sub.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(cdotu_sub.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(cdotu_sub.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(cgemm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(cgemm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(cgemv.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(cgemv.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(cgerc.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(cgerc.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(cgeru.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(cgeru.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(chemm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(chemm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(chemv.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(chemv.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(cher.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(cher.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(cher2.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(cher2.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(cher2k.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(cher2k.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(cherk.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(cherk.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(cscal.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(cscal.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(csscal.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(csscal.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(cswap.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(cswap.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(csymm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(csymm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(csyr2k.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(csyr2k.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(csyrk.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(csyrk.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(ctrmm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(ctrmm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(ctrmv.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(ctrmv.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(ctrsm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(ctrsm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(ctrsv.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(ctrsv.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dasum.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dasum.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(daxpy.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(daxpy.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dcopy.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dcopy.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(ddot.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(ddot.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dgemm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dgemm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dgemv.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dgemv.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dger.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dger.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dnrm2.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dnrm2.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(drot.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(drot.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(drotg.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(drotg.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(drotm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(drotm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(drotmg.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(drotmg.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dscal.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dscal.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dsdot.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dsdot.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dswap.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dswap.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dsymm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dsymm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dsymv.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dsymv.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dsyr.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dsyr.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dsyr2.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dsyr2.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dsyr2k.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dsyr2k.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dsyrk.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dsyrk.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dtrmm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dtrmm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dtrmv.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dtrmv.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dtrsm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dtrsm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dtrsv.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dtrsv.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dzasum.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dzasum.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(dznrm2.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(dznrm2.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(icamax.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(icamax.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(idamax.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(idamax.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(isamax.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(isamax.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(izamax.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(izamax.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(sasum.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(sasum.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(saxpy.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(saxpy.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(scasum.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(scasum.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(scnrm2.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(scnrm2.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(scopy.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(scopy.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(sdot.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(sdot.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(sdsdot.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(sdsdot.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(sgemm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(sgemm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(sgemv.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(sgemv.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(sger.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(sger.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(snrm2.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(snrm2.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(srot.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(srot.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(srotg.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(srotg.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(srotm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(srotm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(srotmg.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(srotmg.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(sscal.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(sscal.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(sswap.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(sswap.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(ssymm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(ssymm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(ssymv.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(ssymv.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(ssyr.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(ssyr.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(ssyr2.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(ssyr2.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(ssyr2k.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(ssyr2k.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(ssyrk.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(ssyrk.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(strmm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(strmm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(strmv.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(strmv.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(strsm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(strsm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(strsv.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(strsv.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(xerbla.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(xerbla.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zaxpy.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zaxpy.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zcopy.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zcopy.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zdotc_sub.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zdotc_sub.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zdotu_sub.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zdotu_sub.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zdscal.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zdscal.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zgemm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zgemm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zgemv.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zgemv.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zgerc.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zgerc.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zgeru.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zgeru.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zhemm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zhemm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zhemv.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zhemv.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zher.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zher.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zher2.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zher2.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zher2k.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zher2k.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zherk.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zherk.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zscal.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zscal.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zswap.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zswap.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zsymm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zsymm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zsyr2k.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zsyr2k.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(zsyrk.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(zsyrk.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(ztrmm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(ztrmm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(ztrmv.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(ztrmv.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(ztrsm.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(ztrsm.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>cblas.lib(ztrsv.obj) : warning LNK4099: PDB 'cblas.pdb' was not found with 'cblas.lib(ztrsv.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\cblas.pdb'; linking object as if no debug info
+     1>gsl.lib(blas.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(blas.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+     1>gsl.lib(init.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(init.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+     1>gsl.lib(error.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(error.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+     1>gsl.lib(stream.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(stream.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+     1>gsl.lib(householder.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(householder.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+     1>gsl.lib(qr.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(qr.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+     1>gsl.lib(init.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(init.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+     1>gsl.lib(rowcol.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(rowcol.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+     1>gsl.lib(submatrix.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(submatrix.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+     1>gsl.lib(mean.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(mean.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+     1>gsl.lib(copy.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(copy.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+     1>gsl.lib(init.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(init.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+     1>gsl.lib(prop.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(prop.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+     1>gsl.lib(subvector.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(subvector.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+     1>gsl.lib(fdfsolver.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(fdfsolver.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+     1>gsl.lib(fdjac.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(fdjac.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+     1>gsl.lib(hybridj.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(hybridj.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+     1>gsl.lib(bspline.obj) : warning LNK4099: PDB 'gsl.pdb' was not found with 'gsl.lib(bspline.obj)' or at 'H:\localCopy\caspar_slipper\x64\Release\gsl.pdb'; linking object as if no debug info
+         caspar_slipper_dll.vcxproj -> H:\localCopy\caspar_slipper\x64\Release\fsti_slipper.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"H:\localCopy\caspar_slipper\x64\Release\fsti_slipper.dll;#2" /manifest x64\Release\fsti_slipper.dll.intermediate.manifest
+       PostBuildEvent:
+         del H:\localCopy\caspar_slipper\caspar_slipper_dll\x64\Release\\main.obj
+         :VCEnd
+       FinalizeBuildStatus:
+         Deleting file "x64\Release\caspar_slipper_dll.unsuccessfulbuild".
+         Touching "x64\Release\caspar_slipper_dll.lastbuildstate".
+     1>Done Building Project "H:\localCopy\caspar_slipper\caspar_slipper_dll\caspar_slipper_dll.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:01:15.96
