@@ -1,0 +1,16 @@
+﻿Build started 5/30/18 3:14:29 PM.
+     1>Project "C:\localCopy\FSTI_block_2.0\linear_solvers\linear_solvers.vcxproj" on node 3 (rebuild target(s)).
+     1>InitializeBuildStatus:
+         Touching "Debug\linear_solvers.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gsl-1.15" /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gmm /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries\ANN /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt PBiCG.cpp PCG.cpp
+         PCG.cpp
+     1>c:\localcopy\fsti_block_2.0\linear_solvers\pcg.h(6): fatal error C1083: Cannot open include file: 'gmm/gmm_kernel.h': No such file or directory
+         PBiCG.cpp
+     1>c:\localcopy\fsti_block_2.0\linear_solvers\pbicg.h(6): fatal error C1083: Cannot open include file: 'gmm/gmm_kernel.h': No such file or directory
+         Generating Code...
+     1>Done Building Project "C:\localCopy\FSTI_block_2.0\linear_solvers\linear_solvers.vcxproj" (rebuild target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.24

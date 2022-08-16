@@ -1,0 +1,39 @@
+﻿Build started 5/30/18 3:14:36 PM.
+     1>Project "C:\localCopy\FSTI_block_2.0\FSTI_block_gap\FSTI_block_gap.vcxproj" on node 4 (rebuild target(s)).
+     1>InitializeBuildStatus:
+         Touching "Debug\FSTI_block_gap.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gsl-1.15" /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gmm /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries\ANN /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt block_gap.cpp block_gap_main.cpp block_ode.cpp dc_surf_mesh.cpp energy.cpp gap_boundary.cpp gap_mesh.cpp influ_set.cpp macro_geometry.cpp oil.cpp p_file.cpp reynolds.cpp scalar_field.cpp sforce.cpp stl.cpp vector_field.cpp
+         vector_field.cpp
+         stl.cpp
+         sforce.cpp
+         scalar_field.cpp
+         reynolds.cpp
+     1>c:\localcopy\fsti_block_2.0\linear_solvers\pbicg.h(6): fatal error C1083: Cannot open include file: 'gmm/gmm_kernel.h': No such file or directory
+         p_file.cpp
+         oil.cpp
+     1>c:\localcopy\fsti_block_2.0\fsti_block_gap\oil.cpp(59): warning C4244: '=' : conversion from 'const double' to 'int', possible loss of data
+         macro_geometry.cpp
+     1>c:\localcopy\fsti_block_2.0\interpolation\interpolation.h(5): fatal error C1083: Cannot open include file: 'ANN/ANN.h': No such file or directory
+         influ_set.cpp
+         gap_mesh.cpp
+         gap_boundary.cpp
+     1>c:\localcopy\fsti_block_2.0\fsti_block_gap\gap_boundary.cpp(333): warning C4018: '<' : signed/unsigned mismatch
+         energy.cpp
+     1>c:\localcopy\fsti_block_2.0\linear_solvers\pbicg.h(6): fatal error C1083: Cannot open include file: 'gmm/gmm_kernel.h': No such file or directory
+         dc_surf_mesh.cpp
+     1>c:\localcopy\fsti_block_2.0\fsti_block_gap\dc_surf_mesh.cpp(52): warning C4244: 'initializing' : conversion from 'std::streamoff' to 'int', possible loss of data
+     1>c:\localcopy\fsti_block_2.0\fsti_block_gap\dc_surf_mesh.cpp(127): warning C4244: 'initializing' : conversion from 'std::streamoff' to 'int', possible loss of data
+         block_ode.cpp
+     1>c:\localcopy\fsti_block_2.0\linear_solvers\pbicg.h(6): fatal error C1083: Cannot open include file: 'gmm/gmm_kernel.h': No such file or directory
+         block_gap_main.cpp
+     1>c:\localcopy\fsti_block_2.0\interpolation\interpolation.h(5): fatal error C1083: Cannot open include file: 'ANN/ANN.h': No such file or directory
+         block_gap.cpp
+     1>c:\localcopy\fsti_block_2.0\linear_solvers\pbicg.h(6): fatal error C1083: Cannot open include file: 'gmm/gmm_kernel.h': No such file or directory
+         Generating Code...
+     1>c:\localcopy\fsti_block_2.0\fsti_block_gap\scalar_field.cpp(633): warning C4715: 'scalar_field::get_zgrad_ijk' : not all control paths return a value
+     1>Done Building Project "C:\localCopy\FSTI_block_2.0\FSTI_block_gap\FSTI_block_gap.vcxproj" (rebuild target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:07.94

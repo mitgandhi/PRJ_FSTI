@@ -1,0 +1,15 @@
+﻿  blockoptions.cpp
+  geometry.cpp
+  input.cpp
+  inputfile.cpp
+  logger.cpp
+  lubricationmodule.cpp
+  materials.cpp
+  oil.cpp
+  operatingconditions.cpp
+  pistonoptions.cpp
+  pmodule.cpp
+  section.cpp
+  slipperoptions.cpp
+  thermalfile.cpp
+  FSTI_input.vcxproj -> E:\New folder\localCopy\FSTI_block_2.0\x64\Release\FSTI_input.lib

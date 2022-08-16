@@ -1,0 +1,63 @@
+﻿Build started 5/30/18 3:14:29 PM.
+     1>Project "C:\localCopy\FSTI_block_2.0\FSTI_block_thermal\FSTI_block_thermal.vcxproj" on node 5 (rebuild target(s)).
+     1>InitializeBuildStatus:
+         Touching "Debug\FSTI_block_thermal.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries /I"C:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gsl-1.15" /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gmm /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt htr_analysis.cpp matrix.cpp mesh.cpp te_solver.cpp thdfl_analysis.cpp th_load.cpp th_tetra_1dof.cpp th_tetra_3dof.cpp /D_SCL_SECURE_NO_DEPRECATE 
+         th_tetra_3dof.cpp
+         th_tetra_1dof.cpp
+         th_load.cpp
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\th_load.cpp(45): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\th_load.cpp(78): warning C4018: '<' : signed/unsigned mismatch
+         thdfl_analysis.cpp
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\thdfl_analysis.cpp(80): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\thdfl_analysis.cpp(167): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\thdfl_analysis.cpp(250): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\thdfl_analysis.cpp(282): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\thdfl_analysis.cpp(374): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\thdfl_analysis.cpp(408): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\thdfl_analysis.cpp(456): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\thdfl_analysis.cpp(581): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\thdfl_analysis.cpp(588): warning C4018: '<' : signed/unsigned mismatch
+         te_solver.cpp
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\te_solver.cpp(221): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\te_solver.cpp(235): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\te_solver.cpp(244): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\te_solver.cpp(253): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\te_solver.cpp(260): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\te_solver.cpp(266): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\te_solver.cpp(347): warning C4018: '<' : signed/unsigned mismatch
+         mesh.cpp
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\mesh.cpp(45): warning C4244: 'initializing' : conversion from 'std::streamoff' to 'int', possible loss of data
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\mesh.cpp(110): warning C4244: 'initializing' : conversion from 'std::streamoff' to 'int', possible loss of data
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\mesh.cpp(171): warning C4244: 'initializing' : conversion from 'std::streamoff' to 'int', possible loss of data
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\mesh.cpp(213): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\mesh.cpp(269): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\mesh.cpp(313): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\mesh.cpp(388): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\mesh.cpp(512): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\mesh.cpp(571): warning C4018: '<' : signed/unsigned mismatch
+         matrix.cpp
+         htr_analysis.cpp
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\htr_analysis.cpp(289): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\htr_analysis.cpp(388): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\fsti_block_thermal\htr_analysis.cpp(488): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"C:\localCopy\FSTI_block_2.0\Debug\FSTI_block_thermal.lib" /NOLOGO Debug\htr_analysis.obj
+         Debug\matrix.obj
+         Debug\mesh.obj
+         Debug\te_solver.obj
+         Debug\thdfl_analysis.obj
+         Debug\th_load.obj
+         Debug\th_tetra_1dof.obj
+         Debug\th_tetra_3dof.obj
+         FSTI_block_thermal.vcxproj -> C:\localCopy\FSTI_block_2.0\Debug\FSTI_block_thermal.lib
+       FinalizeBuildStatus:
+         Deleting file "Debug\FSTI_block_thermal.unsuccessfulbuild".
+         Touching "Debug\FSTI_block_thermal.lastbuildstate".
+     1>Done Building Project "C:\localCopy\FSTI_block_2.0\FSTI_block_thermal\FSTI_block_thermal.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:06.25

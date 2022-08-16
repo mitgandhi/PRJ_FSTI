@@ -1,0 +1,34 @@
+﻿Build started 5/30/18 3:14:29 PM.
+     1>Project "C:\localCopy\FSTI_block_2.0\interpolation\interpolation.vcxproj" on node 4 (rebuild target(s)).
+     1>InitializeBuildStatus:
+         Touching "Debug\interpolation.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries\quadprog /I"C:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gsl-1.15" /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gmm /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries\FSTI_Authorization /I"C:\localCopy\FSTI_block_2.0\06_Third_party_libraries\blitz-0.9" /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries\ANN /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt gpc.c
+         gpc.c
+     1>c:\localcopy\fsti_block_2.0\interpolation\gpc.c(1067): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(253) : see declaration of 'fscanf'
+     1>c:\localcopy\fsti_block_2.0\interpolation\gpc.c(1074): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(253) : see declaration of 'fscanf'
+     1>c:\localcopy\fsti_block_2.0\interpolation\gpc.c(1077): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(253) : see declaration of 'fscanf'
+     1>c:\localcopy\fsti_block_2.0\interpolation\gpc.c(1085): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(253) : see declaration of 'fscanf'
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries\quadprog /I"C:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gsl-1.15" /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries\gmm /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries\FSTI_Authorization /I"C:\localCopy\FSTI_block_2.0\06_Third_party_libraries\blitz-0.9" /IC:\localCopy\FSTI_block_2.0\06_Third_party_libraries\ANN /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt interpl_grid.cpp interpolation.cpp polygon.cpp
+         polygon.cpp
+     1>c:\localcopy\fsti_block_2.0\interpolation\polygon.cpp(233): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\interpolation\polygon.cpp(251): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\interpolation\polygon.cpp(269): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\interpolation\polygon.cpp(285): warning C4018: '<' : signed/unsigned mismatch
+         interpolation.cpp
+     1>c:\localcopy\fsti_block_2.0\interpolation\interpolation.h(5): fatal error C1083: Cannot open include file: 'ANN/ANN.h': No such file or directory
+         interpl_grid.cpp
+     1>c:\localcopy\fsti_block_2.0\interpolation\interpl_grid.cpp(203): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\interpolation\interpl_grid.cpp(209): warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+     1>c:\localcopy\fsti_block_2.0\interpolation\interpl_grid.cpp(220): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\localcopy\fsti_block_2.0\interpolation\interpl_grid.cpp(234): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+     1>Done Building Project "C:\localCopy\FSTI_block_2.0\interpolation\interpolation.vcxproj" (rebuild target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:02.13

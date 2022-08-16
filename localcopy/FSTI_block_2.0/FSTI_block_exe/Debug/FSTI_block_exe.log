@@ -1,0 +1,24 @@
+﻿Build started 5/30/18 3:14:45 PM.
+     1>Project "C:\localCopy\FSTI_block_2.0\FSTI_block_exe\FSTI_block_exe.vcxproj" on node 3 (rebuild target(s)).
+     1>InitializeBuildStatus:
+         Touching "Debug\FSTI_block_exe.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+       ManifestResourceCompile:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\FSTI_block_exe.exe.embed.manifest.res" Debug\FSTI_block_exe_manifest.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\localCopy\FSTI_block_2.0\Debug\FSTI_block_exe.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\FSTI_block_exe.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\localCopy\FSTI_block_2.0\Debug\FSTI_block_exe.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\localCopy\FSTI_block_2.0\Debug\FSTI_block_exe.lib" /MACHINE:X86 Debug\FSTI_block_exe.exe.embed.manifest.res
+         Debug\main.obj
+         C:\localCopy\FSTI_block_2.0\Debug\FSTI_block_dll.lib
+         C:\localCopy\FSTI_block_2.0\Debug\FSTI_block_gap.lib
+         C:\localCopy\FSTI_block_2.0\Debug\FSTI_block_thermal.lib
+         C:\localCopy\FSTI_block_2.0\Debug\FSTI_input.lib
+         C:\localCopy\FSTI_block_2.0\Debug\interpolation.lib
+         C:\localCopy\FSTI_block_2.0\Debug\linear_solvers.lib
+     1>LINK : fatal error LNK1104: cannot open file 'C:\localCopy\FSTI_block_2.0\Debug\FSTI_block_dll.lib'
+     1>Done Building Project "C:\localCopy\FSTI_block_2.0\FSTI_block_exe\FSTI_block_exe.vcxproj" (rebuild target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.21

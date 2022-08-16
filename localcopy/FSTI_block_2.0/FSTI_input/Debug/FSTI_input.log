@@ -1,0 +1,46 @@
+﻿Build started 5/30/18 3:14:29 PM.
+     1>Project "C:\localCopy\FSTI_block_2.0\FSTI_input\FSTI_input.vcxproj" on node 2 (rebuild target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\FSTI_input.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt blockoptions.cpp geometry.cpp input.cpp inputfile.cpp logger.cpp lubricationmodule.cpp materials.cpp oil.cpp operatingconditions.cpp pistonoptions.cpp pmodule.cpp section.cpp slipperoptions.cpp thermalfile.cpp
+         thermalfile.cpp
+         slipperoptions.cpp
+         section.cpp
+     1>c:\localcopy\fsti_block_2.0\fsti_input\section.cpp(80): warning C4018: '<' : signed/unsigned mismatch
+         pmodule.cpp
+         pistonoptions.cpp
+         operatingconditions.cpp
+         oil.cpp
+         materials.cpp
+         lubricationmodule.cpp
+         logger.cpp
+         inputfile.cpp
+         input.cpp
+         geometry.cpp
+         blockoptions.cpp
+         Generating Code...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\Lib.exe /OUT:"C:\localCopy\FSTI_block_2.0\Debug\FSTI_input.lib" /NOLOGO Debug\blockoptions.obj
+         Debug\geometry.obj
+         Debug\input.obj
+         Debug\inputfile.obj
+         Debug\logger.obj
+         Debug\lubricationmodule.obj
+         Debug\materials.obj
+         Debug\oil.obj
+         Debug\operatingconditions.obj
+         Debug\pistonoptions.obj
+         Debug\pmodule.obj
+         Debug\section.obj
+         Debug\slipperoptions.obj
+         Debug\thermalfile.obj
+         FSTI_input.vcxproj -> C:\localCopy\FSTI_block_2.0\Debug\FSTI_input.lib
+       FinalizeBuildStatus:
+         Deleting file "Debug\FSTI_input.unsuccessfulbuild".
+         Touching "Debug\FSTI_input.lastbuildstate".
+     1>Done Building Project "C:\localCopy\FSTI_block_2.0\FSTI_input\FSTI_input.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:07.12

@@ -1,0 +1,4 @@
+﻿  main_dll.cpp
+E:\New folder\localCopy\FSTI_block_2.0\interpolation\interpl_grid.h(25,17): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+E:\New folder\localCopy\FSTI_block_2.0\interpolation\interpl_grid.h(26,17): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+E:\New folder\localCopy\FSTI_block_2.0\FSTI_block_gap\p_file.h(4,11): fatal error C1083: Cannot open include file: 'gsl/gsl_errno.h': No such file or directory
