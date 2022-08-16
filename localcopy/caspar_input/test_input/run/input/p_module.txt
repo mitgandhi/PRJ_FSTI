@@ -1,0 +1,97 @@
+// ------------------------------------------------------------------------- //
+// ------------------ CASPAR pressure module input file -------------------- //
+// ------------------------------------------------------------------------- //
+
+// Pump/motor: test
+
+// ------------------------------------------------------------------------- //
+
+section p_module
+
+	// area file
+	AreaFile		./input/vp_area.txt
+	// Number of Pressure Module revolutions []
+	nrevolutions		5
+	// Displacement chamber dead volume - [m^3]
+	Vdead			0
+	// Low pressure line flow coefficient - [-]
+	alphaD_LP		0
+	// High pressure line flow coefficient - [-]
+	alphaD_HP		0
+	// Low pressure line volume - [m^3]
+	V_LP			0
+	// High pressure line volume - [m^3]
+	V_HP			0
+	// Low pressure cross section area - [m^2]
+	AD_LP			0
+	// High pressure cross section area - [m^2]
+	AD_HP			0
+	// Pumping Mode: upstream pressure low pressure throttle - [bar]
+	// Motoring Mode: downstream pressure low pressure throttle - [bar]
+	P1			300
+	// Pumping mode: downstream pressure high pressure throttle - [bar]
+	// Motoring mode: upstream pressure high pressure throttle - [bar]
+	P2			20
+	// Leakage Options
+	// 0: use input file
+	// 1: constant leakage value
+	leakageoption		1
+	// Constant Leakage Value - [l/min]
+	Q_Leak			0
+	//Automatic area control
+	Auto_Area		1
+	// Area Cover Delivery Volume [m^2](port plate side)		
+	HPvp_area		0
+	// Area Cover Delivery Volume [m^2](HP port) - AD_HPtoLine_pump
+	AD_HPtoLine		0
+	// Flow Coefficient Outlet port - alphaD_HPtoLine
+	alphaD_HPtoLine		0
+	// Volume of line [m^3]
+	V_line			0
+	// Beginning of ODC HP groove Angular position
+	phi0			0
+	// Ending of ODC HP groove Angular position
+	phi2			0
+	// Beginning of IDC LP groove Angular position
+	phi3			0
+	// Ending of IDC LP groove Angular position
+	phi4			0
+	//pre-compression volume [m3]
+	vpv			0
+	//de-compression volume [m3]
+	vdv			0
+	// ----------------------------------- Options ----------------------------------------- //
+	//Momentum equation
+	//0: Disable
+	//1: Momentum in HP port
+	//2: Momentum in HP groove
+	//3: Momentum in LP groove 
+	//4: Momentum in HP and LP groove
+	//5: Momentum in HP port and in HP groove
+	//6: Momentum in HP port and in LP groove
+	//7: Momentum in HP port and in HP and LP groove
+	Momentum	0
+	// Integral HP file
+	IntegralHPfile		
+	// Integral LP file
+	IntegralLPfile		
+	//FV-filter
+	//0: Disable
+	//1: PCFV filter
+	//2: DCFV filter
+	//3: PCFV and DCFV filter
+	FV		0
+	// FV area file
+	FVAreaFile		
+	//Air release port
+	//0: Disable
+	//1: Enable
+	Air		0
+	// Air area file
+	AirAreaFile		
+	//Solver
+	//0: Non-stiff
+	//1: Stiff
+	Solver 0
+	
+endsection

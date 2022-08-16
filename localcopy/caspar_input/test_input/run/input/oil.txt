@@ -1,0 +1,79 @@
+// ------------------------------------------------------------------------- //
+// -------------------------- FSTI oil data file --------------------------- //
+// ------------------------------------------------------------------------- //
+
+section general
+	
+	// Oil type: define the oil model to calculate viscosity, 
+	// density and bulk modulus
+	//   0: constant properties
+	//   1: use user defined equations
+	//   2: HLP 32 Shell Tellus
+	//   3: use Skydrol AS1241 Type IV (Class 1) from SAE AIR 1362 Revision B
+	//   4: ...
+	oiltype		1
+	
+	// Oil Thermal Conductivity [W/mK] 
+	oillambda	0.13
+	// Oil Heat Capacity [J/kgK]		
+	oilC		1880
+	
+endsection
+
+section constant_properties
+
+	// Oil density [kg/m^3]							
+	oildensity	871	
+	// Oil Dynamic Viscosity [Pa s]
+	oilviscosity	0.0705	
+	// Oil Bulk Modulus [Pa]	
+	oilK		1.586e9	
+
+endsection
+
+section user_defined
+
+	// see the manual for an explanation of the coefficients
+	
+	// definition of the range of validity
+	
+	// minimum and maximum pressure [Pa]
+	pmin	0.9e5
+	pmax	1000e5
+	// minimum and maximum pressure [C]
+	Tmin	0
+	Tmax	120
+	
+	// ----------------- viscosity ----------------- //
+	
+	// weighting factor
+	w	0.85
+	// define the function used in the exponential that models
+	// the variation of kinematic viscosity with pressure
+	// use 0 for linear, 1 for power law
+	nupf	1
+	// first coeff for fp
+	nup1	3.0649e-6	
+	// second coeff for fp
+	nup2	-8.5688e-1
+	// first coeff for fT
+	nuT1	7.6970
+	// second coeff for fT
+	nuT2	-3.0757
+	
+	// ---------- density and bulk modulus ---------- //
+	
+	// density at 0 Pa and 20 C
+	rho0	1080
+	// first coeff for density
+	rhop1	7.2993e-10
+	// second coeff for density
+	rhop2	-1.2951e-18
+	// coeff for temperature
+	rhoT	-7.9365e-4
+	// coeff for temperature*pressure
+	rhopT	3.9360e-12
+	
+endsection
+
+// ------------------------------------------------------------------------- //

@@ -1,0 +1,70 @@
+// ------------------------- general informations -------------------------- //
+
+section general
+
+	// mesh file
+	meshFile	./input/block/thermal/NG165_block_thermal_mesh.inp			
+	// inertial relief option: 1->active, 0->not active
+	IR	1			
+	// max number of iterations for the linear solver
+	maxIters	2000			
+	// solver tolerance
+	tolerance	1e-6			
+
+endsection
+
+// list of volume set and associated material name (located in materials.txt)
+section materials
+
+	set1	steel		// [string - string]
+	set2	brass		// [string - string]
+	set3 	steel		// [string - string]
+		
+endsection
+
+// ------------------------------ Boundaries ------------------------------- //
+
+section boundary
+
+	type	dirichlet	// [dirichlet, neumann, mixed]	
+	set		outer		// outer set	
+	Tp		100			// [C]	
+	
+endsection
+
+section boundary
+
+	type	mixed		// [dirichlet, neumann, mixed]	
+	set		DCs			
+	Tinf	51.2		// [C]	
+	h		4000		// [W/m^2K]	
+	
+endsection
+
+section boundary
+
+	type	neumann		// [dirichlet, neumann, mixed]	
+	set		bushings	
+	q		20000		// [W/m^2]	
+
+endsection
+
+// ------------------------------ Constraints ------------------------------ //
+
+section constraint
+
+	set	nodeset1		
+	x	0	// 1 fixed, 0 free	
+	y	0	// 1 fixed, 0 free 	
+	z	1	// 1 fixed, 0 free	
+	
+endsection
+
+section constraint
+
+	set	nodeset2					
+	x	0	// 1 fixed, 0 free	
+	y	0	// 1 fixed, 0 free	
+	z	1	// 1 fixed, 0 free	
+	
+endsection

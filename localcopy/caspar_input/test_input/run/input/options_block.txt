@@ -1,0 +1,108 @@
+// ------------------------------------------------------------------------- //
+// -------------------- FSTI Gap Design Block Options input file ----------- //
+// ------------------------------------------------------------------------- //
+
+section general
+	
+	// simulation step angle
+	step_angle	1.0 // [deg]
+	// Activate/Deactivate the EHD on the cylinder block side
+	EHD_CB		1
+	// specify the folder containing the influence matrices
+	IM_CB 		./input/IM/CB
+	// Activate/Deactivate the EHD on the valve plate side 
+	EHD_VP 		1
+	// specify the folder containing the influence matrices
+	IM_VP		./input/IM/VP
+	// Activate/Deactivate the Thermal analysis on the cylinder block side
+	Thermal_CB	0
+	// Activate/Deactivate the Thermal analysis on the valve plate side
+	Thermal_VP	0
+	// Start the simulation with the thermal analysis
+	StartWithTH	1
+	// enable macro geometry on cylinder block (1: axisymmetric, 2: waved, 3: 2D profile)
+	macro_CB		0
+	// enable macro geometry on valve plate (1: axisymmetric, 2: waved, 3: 2D profile)
+	macro_VP		4
+	// write residual vs iterations in a text file for each FSI solution
+	EHD_loop_debug	0
+	//	print a vtk file (light version) for each time step
+	dense_vtk_out_light	1
+	// print a vtk file (full version) for each time step
+	dense_vtk_out	0
+	
+	
+endsection
+
+section numeric
+
+	// minimum film thickness
+	hmin	0.2	// [um]
+	// contact algorithm
+	// 0 let it go
+	// 1 use velocity correction
+	contact	1
+	
+	// -------------- heat flux ---------------- //
+	q_min_limit	0		// W/m^2
+	q_max_limit 200e3	// W/m^2
+	
+	// ---------- force balance ---------- //
+
+	// Newton Zero Finding Tolerance - [N]
+	epsilonB		1.0
+	// Newton Delta Squeeze Velocity - [m/s]
+	delta_v			1e-6
+	// Use the additional FSI squeeze when solving the Reynolds equation
+	// during the force balance 
+	use_fsi_fb	1
+	
+	// --------------- hydrodynamic and hydrostatic squeeze  --------------- //
+
+	// squeeze due to change in hydrostatic deformations
+	// (due to change in pressure in the DC or valve plate ports over time)
+	use_sqz_hs	1
+	// squeeze due to change in hydrodynamic pressure field in the gap
+	use_sqz_hd	1
+
+	// ------------ FEM thermoelastic solver settings ------------- //
+
+	// max number of iterations 
+	FEM_maxIters			1000
+	// solver tolerance
+	FEM_tolerance			1e-6
+	
+	// relaxation factor used for the cylinder block thermal analysis
+	relax_CB	0.6
+	// relaxation factor used for the valve plate thermal analysis
+	relax_VP	0.6
+
+endsection
+
+section position
+
+	// block position over the three control points
+	// P1 is @ 0 deg, P2 is @ 120 deg, P3 is @ 240 deg
+	
+	hB1		2	// [um]
+	hB2		2	// [um]
+	hB3		2	// [um]
+	
+endsection
+
+section fluidgrid
+
+	// Volumes in circumferential direction
+	N		360
+	// Volumes in radial direction
+	M		50
+	// Volumes in height direction
+	Q		20
+	// stl file used to define the cylinder block gap
+	stl_cb	./input/block/H1P_blockgap.stl
+	// stl file used to define the valve plate gap
+	stl_vp	./input/block/H1P_valveplategap.stl
+
+endsection
+
+// ------------------------------------------------------------------------- //

@@ -1,0 +1,25 @@
+// -------------------------- Materials definition ------------------------- //
+
+// n materials can be defined here
+
+section material 
+
+	name 	steel					
+	E		207e9	// [Pa]			
+	nu		0.29	// []			
+	rho		7860	// [kg/m3]		
+	lambda	10		// [W/mK]		
+	alpha	1e-6	// []			
+
+endsection
+
+section material 
+
+	name 	brass
+	E		110e9	// [Pa]
+	rho		8730	// [km/m3]
+	nu		0.25	// []
+	lambda	20		// [W/mK]
+	alpha	3e-6	// []
+
+endsection

@@ -1,0 +1,165 @@
+// ------------------------------------------------------------------------- //
+// ------------------- CASPAR Piston Options input file -------------------- //
+// ------------------------------------------------------------------------- //
+
+// Pump/motor: test
+
+// ------------------------------------------------------------------------- //
+
+section general
+	
+	// Use simulated displacement chamber pressure
+	ReadpFile			1	
+	// Solve Reynolds equation using MultiGrid
+	ReynoldsMultiGrid		1	
+	// Solve energy equation in the gap
+	EnergyEquation			1	
+	// Solve temperature distribution in piston and cylinder
+	HeatTransfer			1	
+	// Solve elastic deformation due to pressure
+	PressureDeformation		1	
+	// Path to Piston Influence Matrix
+	IM_piston_path			./Piston	
+	// Path to Bushing Influence Matrix	
+	IM_bushing_path			./Bushing	
+	// Solve parallelized elastic deformation due to pressure
+	PressureDeformationOMP		1	
+	// Solve elastic deformation due to temperature
+	ThermalDeformation		1	
+	// Simulate EHD test rig	
+	EHDTestRig			0	
+	// Simulate Tribo test rig	
+	TriboTestRig			0	
+	// Piston Macrogeometry ( 0 - Cylindrical Piston; 1 - Stepwise Piston; 2 - Half Spherical Piston; 3 - Spherical Piston; 4 - Polynomial Piston )
+	McrK				0	
+	// Piston Macrogeometry Path (Required for McrK = 1,4 only)
+	McrK_file			./input/McrK.txt	
+	// Bushing Macrogeometry ( 0 - Cylindrical Bushing; 1 - Stepwise Bushing; 2 - 2D Bushing )
+	McrB				0	
+	// Bushing Macrogeometry Path (Required for McrB = 1,2 only)
+	McrB_file			./input/McrB.txt	
+	
+endsection
+
+section numeric
+
+	// ---------- force balance ---------- //
+
+	// Newton Zero Finding Tolerance - [-]
+	epsilonK		0.01	
+	// Newton Inner Loop Max Count - [-]
+	jmax			20	
+	// Newton Outer Loop Max Count - [-]	
+	kmax			50	
+	// Newton Delta Squeeze Velocity - [m/s]
+	delta_v			1e-6	
+
+	// ---------- Outer Convergence Loop Parameters ---------- //
+	
+	// Damping Coefficient Pressure - [-]
+	AlphaP			0.5		
+	// Damping Coefficient Deformation - [-]
+	AlphaDef		0.5		
+	// Damping Coefficient Viscosity - [-]
+	AlphaMu			0.5		
+	// Damping Coefficient Thermal - [-]
+	AlphaTh			0.5		
+	// Minimum Fluid Residual - [-]
+	Rmin_p			1e-4		
+	// Minimum Structure Residual - [-]
+	Rmin_h			1e-4		
+	// Maximum Iterations Number [-]
+	nmax			200		
+
+	// ------ Inner Convergence Loop Parameters ------//
+
+	// Minimum Reynolds Equation Residual - [-]
+	Rmin_R			1e-7		
+	// Minimum Energy Equation Residual - [-]
+	Rmin_E			1e-6		
+
+	// ------ ODE Solver Parameters ------ //
+
+	// Simulation Maximum Step Size - [deg]	
+	Simalphastep		0.25		
+	// Simulation Maximum Plot Step Size - [deg]		
+	Simalphaplot		1.0		
+
+	// ------ Material Properties for Antipenetration ------ //
+
+	// Piston elastic modulus - [Pa]
+	EmodK		210.0e9		
+	// Piston Poisson ratio - [-]
+	vK		0.27		
+	// Cylinder elastic modulus - [Pa]	
+	EmodB		130.0e9		
+	// Cylinder Poisson ratio - [-]
+	vB		0.32		
+
+	// ------ Antipenetration Solver Parameters ------ //
+	
+	//Rows of cells on which to apply contact forces [-]
+	penCells		1	
+	// Minimum Gap Height - [microns]
+	hmin			0.1		
+
+	// ------ Thermal Parameters ------ //
+	
+	// Estimate Maximum Gap Temperature - [°C]		
+	Tmax					70.0		
+	//Convection Coefficient Displacement Chamber - [W/m2°C]
+	AlphaDC					3.0e3		
+	//Convection Coefficient Case - [W/m2°C]
+	AlphaCase				2.0e3		
+
+endsection
+
+section position
+
+	// Piston initial positions: xA, yA, xB, yB - [um]
+	// A: reference point closer to the displacement chamber
+	// B: reference point closer to the swash plate
+	
+	xA	0 	// [um]		
+	yA	0	// [um]		
+	xB	0 	// [um]		
+	yB	0 	// [um]		
+	
+endsection
+
+// fluid grid used with the Gauss-Seidel solver
+section fluidgrid_GS
+
+	// Volumes in fluid film circumference
+	N	256	
+	// Volumes in fluid film length
+	M	256	
+	// Volumes in fluid film height
+	Q	100	
+
+endsection
+
+// fluid grid used with the Geometric Multigrid Solver
+section fluidgrid_GMG
+	
+	// number of levels
+	nL		8	
+	// volumes in fluid film length, for each level
+	MG_M	256	128	64	32	16	8	4	2
+	// volumes in fluid film circumference, for each level, for each level
+	MG_N	256	128	64	32	16	8	4	2
+	// Multigrid Mesh Definition [Q] All Levels (Q volumes in fluid film height)
+	Q		20		
+
+	// Type of Cycle: 0 for V-Cycle; 1 for W-Cycle
+	VW		1	
+	// Type of Prolongation: 0 for Standard; 1 for Bilinear
+	MGInt		1	
+	// Number of GS Sweeps Down-Leg
+	v1		2	
+	// Number of GS Sweeps Up-Leg
+	v2		2	
+	
+endsection
+
+// ------------------------------------------------------------------------- //

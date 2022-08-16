@@ -1,0 +1,15 @@
+// ------------------------- Lubrication Module -------------------------- //
+
+section lubrication_module
+
+	// Solve the piston - bushing interface (1: yes, 0: no)
+	solve_piston 			1 
+	// Solve the cylinder block - valve plate interface (1: yes, 0: no)
+	solve_block 			1 
+	// Solve the slipper - swashplate interface (1: yes, 0: no)
+	solve_slipper 			1 
+
+	// The number of shaft revolutions the lubrication module will solve
+	n_lubrication_revolutions	10
+
+endsection

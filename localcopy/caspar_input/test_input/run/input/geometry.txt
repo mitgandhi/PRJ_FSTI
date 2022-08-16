@@ -1,0 +1,121 @@
+// ------------------------------------------------------------------------- //
+// ---------------------- CASPAR Geometry input file ----------------------- //
+// ------------------------------------------------------------------------- //
+
+// Pump/motor: test
+
+// ------------------------------------------------------------------------- //
+
+section geometry
+
+	// Swash Plate Cross Angle (Measured in x-z plane, positive counterclockwise when viewed from positive y-axis.) [deg]
+	gamma		0 	
+	// Pitch Diameter Cylinder Block [mm]
+	dB	102 	
+	// Piston Diameter - [mm]
+	dK	25 	
+	// Bushing Diameter - [mm]
+	dZ	100 	
+	// Piston Length - [mm]  
+	lK	100 	
+	// Bushing Length - [mm]
+	lF	100 	
+	// Bushing Beginning Position	- [mm]	
+	le	100 	
+	// Displacement Chamber Length with Piston at ODP - [mm]		
+	lZ0	100 	
+	// Diameter Orifice Piston Head - [mm]
+	dDK	100 	
+	// Length Orifice Piston Head - [mm]		
+	lDK	100 	
+	// Length of Piston Gap surface - [mm]	
+	lKG	100 	
+	// Length of Piston Chamfer - [mm]	
+	lch	100 	
+	// Reduction Radius for Spherical Piston - [microns]
+	rK_red	100 	
+	// Length Cylindrical Section of the Piston 
+	// (only for half spherical piston) - [mm]
+	lK_hs	100 	
+	// Piston Relative Rotational Speed [-]
+	speedK	100 	
+	// Slipper Outer Diameter - [mm]		
+	doutG	100 	
+	// Slipper Inner Diameter - [mm]
+	dinG	100 	
+	// Slipper Orifice Diameter - [mm]
+	dDG	100 	
+	// Slipper Orifice Length - [mm]	
+	lDG	100 	
+	// Slipper Socket Area (projected normal to the swashplate) - [mm^2]	
+	aSock	100 	
+	// Distance to the Center of Mass of the Piston/Slipper Assembly - [mm]
+	lSK	100 	
+	// Distance from Piston Head to Slipper Center of Mass - [mm]	
+	lSG	100 	
+	// Distance from Piston Head to Gap Area - [mm]
+	lG	100 	
+	// Mass of Piston/Slipper Assembly - [g]	
+	mK	100 	
+	// Volume of slipper pocket - [mm^3]	
+	vPocket		0
+	//
+	// Maximal Height of the Slipper Holder - [microns]	
+	// (only used for fixed clearance holder, positive spring holder: -1000) 	
+	hmaxG	100 	
+	// Slipper Holder Stiffness Coefficient [N/m] 
+	//(if fixed clearance holder is chosen)	
+	// Slipper Total Spring Force [N] (if positive slipper spring holder)	
+	Fslipper	100 	
+	// Slipper Mass - [g]					
+	mG	100 	
+	// gap inner diameter - [mm]
+	d_gap_in	100 	
+	// opening inner diameter - [mm]
+	d_ope_in	100 	
+	// opening outer diameter - [mm]
+	d_ope_out	100 	
+	// groove separing the sealing land to the outer bearing, inner radius
+	// (use 0 if not present) - [mm]
+	d_groove_in	100 	
+	// groove separing the sealing land to the outer bearing, outer radius
+	// (use 0 if not present) - [mm]
+	d_groove_out	100 	
+	// gap outer diameter - [mm]
+	d_gap_out	100 	
+	// cylinder block / valve plate interface diameter of the spherical gap 
+	// (use 0 if flat)
+	d_spherical	0 	
+	// outer radius cylinder block - [mm]
+	dBa	100 	
+	// Cylinder Block Total Length - [mm]		
+	lengthB	100 	
+	// Cylinder Block Canal Length (including the taper length if present) - [mm]	
+	lengthcanalB	100 	
+	// offset of the actual crowing point of the block respect the ideal position, 
+	// which would be half a way between the piston stroke
+	delta_z0	-13.5
+	// projection of the displacement chamber area in the axial direction
+	// (used to calculate the axial force on the block due to pressure. 
+	// If the DC has a complex shape, provide the surface mesh in DC_mesh) - [mm2]
+	ADC	100 	
+	// displacement chamber surface mesh (use NULL if not provided)
+	DC_mesh		NULL 	
+	// mass of the block - [kg]
+	mB	100 	
+	// Moment of inertia of the block - [kg*m^2] 
+	// the reference is the spline center, 
+	// the moment of inertia referes to any radial position (Ixx = Iyy)
+	IMB	100 	
+	// spring force cylinder block [N]
+	Fblock	100 	
+	// area where the spring force (pushing down the block) is acting on
+	spring_area	100 	
+	//offset of the swashplate rotation axis from the pump origin in the y-axis. Positive values are towards IDC
+	offset_J	0
+	//offset of the swashplate rotation axis from the pump origin in the z-axis. Positive values are away from the valve plate
+	offset_K	0
+
+endsection
+	
+

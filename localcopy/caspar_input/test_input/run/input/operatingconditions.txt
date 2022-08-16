@@ -1,0 +1,38 @@
+// ------------------------------------------------------------------------- //
+// ---------------- CASPAR Operating conditions input file ----------------- //
+// ------------------------------------------------------------------------- //
+
+// Pump/motor: test
+
+// ------------------------------------------------------------------------- //
+
+section operatingconditions
+
+	// working mode 1:pumping 2:motoring
+	mode		1
+	// Number of Pistons
+	npistons	9
+	// Rotational speed [rpm]
+	speed		3000
+	// Swash Plate Angle [deg]
+	beta		17.0
+	// Max Swash Plate Angle [deg]
+	betamax		17.0
+
+	// name of the pressure module file
+	pModuleFile		pFile_p300_n3000.dat
+	// High Pressure [bar]
+	HP	320
+	// Low pressure [bar]
+	LP	20	
+	// Case pressure [bar]
+	pCase	1
+
+	// Temperature High Pressure [C]
+	T_HP	68.3	
+	// Temperature Low Pressure [C]
+	T_LP	62.9	
+	// Temperature Leakage [C]
+	T_Leak	92.6	
+
+endsection

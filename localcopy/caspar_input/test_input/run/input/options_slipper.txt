@@ -1,0 +1,119 @@
+// ------------------------------------------------------------------------- //
+// ------------------- CASPAR Slipper Options input file ------------------- //
+// ------------------------------------------------------------------------- //
+
+// Pump/motor: test
+
+// ------------------------------------------------------------------------- //
+
+section general
+	
+	// Flow Type for Piston/
+	// 0: turbulent flow through piston and  orifices
+	// 1: laminar flow through piston and  orifices
+	// 2: turbulent flow through piston orifice
+	// 3: laminar flow through piston orifice						
+	flowtype 				0			
+	// Orifice Coefficient Piston/ Assembly - [-]	
+	alphaD_KG				0.6		
+	//  macro geometry
+	EnableSlipperMacro			0		
+	// path to the  macro geometry file
+	SlipperMacroFile			./null		
+	// Consider  surface roughness
+	EnableRoughness				0		
+	//  roughness Rq [um]
+	RoughnessRq				0.3		
+	// Solve energy equation in the gap
+	CalcEnergy				1		
+	// Solve elastic deformation due to pressure on the slipper
+	SlipperPressureDeformation		0		
+	// Consider the thermo elastic problem for the slipper
+	SlipperThermoElastic			0		
+	// Solve elastic deformation due to pressure on the swashplate
+	SwashplatePressureDeformation	0		
+	// Consider the thermo elastic problem for the swashplate
+	SwashplateThermoElastic			0		
+	// 0: Disable EHD squeeze, 1: Enable EHD squeeze
+	EHDsqueeze				0		
+	// 0: Use newton method. 1: Use hybrid force balance
+	HybridForceBalance			0	
+	// 0: Don't use a pre-FSI force balance, 1: Use a pre-FSI force balance
+	preFSIforceBalance			1
+	// 0: Implicit ODE, 1: Explicit ODE
+	Explicit				1		
+	// This will enable the full picard iteration for all  calculations 
+	// (Not normally recommended)
+	ComplexPicard			0		
+	// Debug mode enables extra logging
+	DebugMode				0		
+	// Dense mode will only solve for a single time step but with dense FSI results
+	DenseMode				0		
+	// Absolute or relative path to the  and/or swashplate IM folder
+	IMpath					./IM		
+	
+endsection
+
+section numeric
+	
+	// ------------------------- Slipper Parameters ---------------------- //
+	
+	// over-relaxation coeff for Gauss-Seidel solution for Reynolds
+	AlphaReynolds	0		
+	// over-relaxation coeff for Gauss-Seidel solution for Energy
+	AlphaEnergy		0		
+	// under relaxation parameter for the poket pressure calculation
+	AlphapG			0		
+	// under relaxation parameter for the TEHD calculation
+	AlphaTEHD		0
+	//
+	Newton1			0		
+	//
+	Newton2			0		
+	//
+	Newton3			0		
+	// FSI residual tolerance, recommended to use a value between 1e-3 and 1e-4
+	FSIresidTol		1e-3
+
+endsection
+
+section position
+
+	// Slipper initial positions [um]	
+	hG1		5	//[um]		
+	hG2		5	//[um]		
+	hG3		5	//[um]		
+	
+endsection
+
+section fluidgrid
+
+	// Volumes in circumferential direction
+	N	360		
+	// Volumes in radial direction
+	M	50		
+	// Volumes in height direction
+	Q	20		
+	// This is the radial ring of cells that slipper leakage will be calculated at
+	SealingLand 	2
+
+	// The radial fluid grid cell id of a groove connected to pocket pressure
+	// Note this will allocate 3 cells to the groove
+	// Set to a negative number to disable
+	Groove1Location		-1
+	// The center radius of Groove1
+	Groove1r			0
+	// The total dr of Groove1
+	Groove1dr		0
+
+	// The radial fluid grid cell id of a groove connected to case pressure
+	// Note this will allocate 3 cells to the groove
+	// Set to a negative number to disable
+	Groove2Location		-1
+	// The center radius of Groove2
+	Groove2r			0
+	// The total dr of Groove2
+	Groove2dr		0
+endsection
+
+// ------------------------------------------------------------------------- //
